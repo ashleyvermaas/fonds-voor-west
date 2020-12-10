@@ -55,5 +55,14 @@ router.post('/projects/:id/edit', (req, res, next) => {
   .catch((error) => next(error));
 });
 
+// Route to project details
+router.get('/projects/:id/details', (req, res, next) => {
+  const { id } = req.params;
+
+  Project.findById(id)
+  .then((projectFromDB) => res.render('projects/details', projectFromDB))
+  .catch((error) => next(error))
+})
+
 module.exports = router;
 

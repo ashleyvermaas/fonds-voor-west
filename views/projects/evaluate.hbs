@@ -1,3 +1,18 @@
 <h1>Evaluation</h1>
 
-{{name}}
+<p>{{name}}</p>
+<p>{{date}}</p>
+<p>{{location}}</p>
+<p>{{description}}</p>
+
+<form action="/project/{{_id}}/evaluate" method="POST">
+  <label for="status">Select evaluation:</label>
+  <select id="status" name="status">
+    <option value="approve">Approve</option>
+    <option value="decline">Decline</option>
+    <option value="request">Request information</option>
+  </select>
+
+  <button type="submit">Save evaluation</button>
+
+</form>

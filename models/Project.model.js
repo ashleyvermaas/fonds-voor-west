@@ -22,6 +22,10 @@ const projectSchema = new Schema(
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
+  },
+  status: {
+    type: String,
+    enum: ['approve', 'decline', 'request']
   }
 }, 
 {

@@ -66,8 +66,17 @@ router.get('/projects/:id/details', (req, res, next) => {
 
   Project.findById(id)
   .then((projectFromDB) => res.render('projects/details', projectFromDB))
-  .catch((error) => next(error))
-})
+  .catch((error) => next(error));
+});
+
+// Route to evaluate
+router.get('/projects/:id/evaluate', (req, res, next) => {
+  const { id } = req.params;
+
+  Project.findById(id)
+  .then((projectFromDB) => res.render('projects/evaluate', projectFromDB))
+  .catch((error) => next(error));
+});
 
 module.exports = router;
 

@@ -4,8 +4,8 @@
 
 {{!-- the new version, with the session: --}}
 
-{{#if userInSession}}
-    <h2>Welcome, {{ userInSession.firstname }}!</h2>
+{{#if user}}
+    <h2>Welcome, {{ user.firstname }}!</h2>
     <p>This is your profile page my friend!</p>
     <button>
         <a href="/profile">Reload the page</a>

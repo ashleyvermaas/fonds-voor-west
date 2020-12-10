@@ -86,5 +86,14 @@ router.get('/projects/:id/evaluate', (req, res, next) => {
   .catch((error) => next(error));
 });
 
+router.post('/projects/:id/evaluate', (req, res, next) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  Project.findByIdAndUpdate(id, status, {new: true})
+  .then(() => res.redirect('/projects'))
+  .catch((error) => next(error));
+});
+
 module.exports = router;
 

@@ -25,7 +25,8 @@ const projectSchema = new Schema(
   },
   status: {
     type: String,
-    enum: ['approve', 'decline', 'request']
+    enum: ['Approve', 'Decline', 'Request', 'Pending'],
+    default: 'Pending'
   }
 }, 
 {

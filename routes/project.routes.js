@@ -13,13 +13,18 @@ router.get('/projects', (req, res, next) => {
   .catch((error) => next(error));
 });
 
-// Routes to apply project
-router.get('/apply', (req, res, next) => {
-  res.render('projects/apply');
+// Routes to create project
+router.get('/create', (req, res, next) => {
+  res.render('projects/create');
 });
 
-router.post('/apply', (req, res, next) => {
+router.post('/create', (req, res, next) => {
   const { name, date, location, description } = req.body;
+
+  if (!name || !date || !location || !description) {
+    res.render('projects/create', {errorMessage: 'All fields are mandatory. Please provide answers for all fields'});
+    return;
+  }
 
   Project.create(req.body)
   .then(() => res.redirect('/projects'))
@@ -54,6 +59,15 @@ router.post('/projects/:id/edit', (req, res, next) => {
   .then(() => res.redirect('/projects'))
   .catch((error) => next(error));
 });
+
+// Route to project details
+router.get('/projects/:id/details', (req, res, next) => {
+  const { id } = req.params;
+
+  Project.findById(id)
+  .then((projectFromDB) => res.render('projects/details', projectFromDB))
+  .catch((error) => next(error))
+})
 
 module.exports = router;
 

@@ -10,26 +10,51 @@ const saltRounds = 10;
 
 
 // Route to singup page
-router.get('/signup', (req, res) => res.render('auth/signup'));
+router.get('/signup', (req, res, next) => res.render('auth/signup'));
 
 // Route for posting singup
-router.post('/signup', (req, res) => {
+router.post('/signup', (req, res, next) => {
   const {firstname, lastname, email, password} = req.body;
 
-  bcrypt.genSalt(saltRounds)
-  .then(salt => bcrypt.hash(password, salt))
-  .then(hashedPassword => {
-    return User.create({
-      firstname,
-      lastname,
-      email,
-      passwordHash: hashedPassword
-    });
-  })
-  .then(res.redirect('/profile'))
-  .catch();
-});
+  if (!firstname || !lastname || !email || !password) {
+    res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
+    return;
+  }
 
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  if (!regex.test(password)) {
+    res
+      .status(500)
+      .render('auth/signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
+    return;
+  }
+
+  bcrypt.genSalt(saltRounds)
+    .then(salt => bcrypt.hash(password, salt))
+    .then(hashedPassword => {
+      return User.create({
+        firstname,
+        lastname,
+        email,
+        passwordHash: hashedPassword
+      });
+    })
+    .then(userFromDB => {
+      console.log('Newly created user is: ', userFromDB);
+      res.redirect('/profile');
+    })
+    .catch(error => {
+      if (error instanceof mongoose.Error.ValidationError) {
+        res.status(500).render('auth/signup', { errorMessage: error.message });
+      } else if (error.code === 11000) {
+        res.status(500).render('auth/signup', {
+          errorMessage: 'Email need to be unique. Email is already used.'
+        });
+      } else {
+        next(error);
+      }
+    }); 
+});
 
 
 // Route to login page

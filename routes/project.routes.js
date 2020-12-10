@@ -6,7 +6,8 @@ const mongoose = require('mongoose');
 
 // Route to project-list
 router.get('/projects', (req, res, next) => {
-  Project.find()
+  const { _id } = req.user
+  Project.find({ owner: _id })
   .then((projectsFromDB) => {
     res.render('projects/projects-list', {projects: projectsFromDB});
   })
@@ -20,13 +21,20 @@ router.get('/create', (req, res, next) => {
 
 router.post('/create', (req, res, next) => {
   const { name, date, location, description } = req.body;
+  const { _id } = req.user;
 
   if (!name || !date || !location || !description) {
     res.render('projects/create', {errorMessage: 'All fields are mandatory. Please provide answers for all fields'});
     return;
   }
 
-  Project.create(req.body)
+  Project.create({
+    name, 
+    date, 
+    location, 
+    description,
+    owner: _id,
+  })
   .then(() => res.redirect('/projects'))
   .catch((error) => next(error));
 });

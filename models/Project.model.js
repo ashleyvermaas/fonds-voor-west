@@ -4,10 +4,12 @@ const { Schema, model } = mongoose;
 const projectSchema = new Schema(
 {
   name: {
-    type: String
+    type: String,
+    required: [true, 'Name is required.']
   },
   date: {
-    type: String
+    type: String,
+    required: [true, 'Date is required.']
   },
   location: {
     type: String,

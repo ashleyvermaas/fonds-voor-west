@@ -1,0 +1,19 @@
+<h1>Edit</h1>
+
+<form action="/projects/{{_id}}/edit" method="POST">
+
+<label for="name-input">Project Name:</label>
+<input type="text" name="name" id="name-input" value="{{name}}"/>
+
+<label for="date-input">Date:</label>
+<input type="date" name="date" id="date-input" value="{{date}}"/>
+
+<label for="location-input">Location:</label>
+<input type="text" name="location" id="location-input" value="{{location}}"/>
+
+<label for="description-input">Description:</label>
+<textarea name="description" id="description-input" cols="30" rows="4">{{description}}</textarea>
+
+<button type="submit">Save changes</button>
+
+</form>

@@ -10,26 +10,51 @@ const saltRounds = 10;
 
 
 // Route to singup page
-router.get('/signup', (req, res) => res.render('auth/signup'));
+router.get('/signup', (req, res, next) => res.render('auth/signup'));
 
 // Route for posting singup
-router.post('/signup', (req, res) => {
+router.post('/signup', (req, res, next) => {
   const {firstname, lastname, email, password} = req.body;
 
-  bcrypt.genSalt(saltRounds)
-  .then(salt => bcrypt.hash(password, salt))
-  .then(hashedPassword => {
-    return User.create({
-      firstname,
-      lastname,
-      email,
-      passwordHash: hashedPassword
-    });
-  })
-  .then(res.redirect('/profile'))
-  .catch();
-});
+  if (!firstname || !lastname || !email || !password) {
+    res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
+    return;
+  }
 
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  if (!regex.test(password)) {
+    res
+      .status(500)
+      .render('auth/signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
+    return;
+  }
+
+  bcrypt.genSalt(saltRounds)
+    .then(salt => bcrypt.hash(password, salt))
+    .then(hashedPassword => {
+      return User.create({
+        firstname,
+        lastname,
+        email,
+        passwordHash: hashedPassword
+      });
+    })
+    .then(userFromDB => {
+      console.log('Newly created user is: ', userFromDB);
+      res.redirect('/profile');
+    })
+    .catch(error => {
+      if (error instanceof mongoose.Error.ValidationError) {
+        res.status(500).render('auth/signup', { errorMessage: error.message });
+      } else if (error.code === 11000) {
+        res.status(500).render('auth/signup', {
+          errorMessage: 'Email need to be unique. Email is already used.'
+        });
+      } else {
+        next(error);
+      }
+    }); 
+});
 
 
 // Route to login page
@@ -41,7 +66,7 @@ router.post('/login', (req, res, next) => {
  
   if (email === '' || password === '') {
     res.render('auth/login', {
-      errorMessage: 'Please enter both, username and password to login.'
+      errorMessage: 'Please enter both, email and password to login.'
     });
     return;
   }
@@ -49,20 +74,30 @@ router.post('/login', (req, res, next) => {
   User.findOne({ email })
     .then(user => {
       if (!user) {
-        res.render('auth/login', { errorMessage: 'Username is not registered. Try with other username.' });
+        res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
         return;
       } else if (bcrypt.compareSync(password, user.passwordHash)) {
-          // req.session.currentUser = user;
-          res.redirect('/profile');
+        req.session.currentUser = user;
+        res.redirect('/profile');
+
+        // res.render('users/user-profile', { user });
       } else {
-        res.render('auth/login', { userDetails: {email, password}, errorMessage: 'Incorrect password.' });
+        res.render('auth/login', { errorMessage: 'Incorrect password.' });
       }
     })
     .catch(error => next(error));
 });
 
 // Route to user profile
-router.get('/profile', (req, res) => res.render('auth/profile'));
+router.get('/profile', (req, res) => {
+  res.render('users/user-profile', { userInSession: req.session.currentUser });
+});
+
+// Route to logout
+router.post('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
 
 
 module.exports = router;

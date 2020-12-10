@@ -1,11 +1,19 @@
 <h1>List of all projects</h1>
 
 {{#each projects}}
-<h4>{{name}}</h4>
-<p>{{date}}</p>
-<p>{{location}}</p>
-<p>{{description}}</p>
+<div>
+  <h4>{{name}}</h4>
+  <p>{{date}}</p>
+  <p>{{location}}</p>
+  <p>{{description}}</p>
+
+  <form action="/projects/{{_id}}/delete" method="POST">
+    <button>Delete</button>
+  </form>
+  
+</div>
 <hr>
+
 {{else}}
 <h2>No project available</h2>
 {{/each}}

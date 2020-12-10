@@ -13,8 +13,7 @@ router.get('/projects', (req, res, next) => {
   .catch((error) => next(error));
 });
 
-
-// Routes to create a project
+// Routes to apply project
 router.get('/apply', (req, res, next) => {
   res.render('projects/apply');
 });
@@ -27,6 +26,14 @@ router.post('/apply', (req, res, next) => {
   .catch((error) => next(error));
 });
 
+// Route to delete a project
+router.post('/projects/:id/delete', (req, res, next) => {
+  const { id } = req.params;
+
+  Project.findByIdAndDelete(id)
+  .then(() => res.redirect('/projects'))
+  .catch((error) => next(error));
+});
 
 // Routes to edit a project
 

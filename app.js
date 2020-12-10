@@ -120,6 +120,19 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
+// Rolls authentication
+const checkRoles = role => (req, res, next) => {
+  if (req.isAuthenticated() && req.user.role === role) {
+    return next();
+  } else {
+    res.redirect('/login');
+  }
+};
+
+const checkGuest = checkRoles('GUEST');
+const checkCommittee = checkRoles('COMMITTEE');
+const checkApplicant = checkRoles('APPLICANT');
+const checkAdmin = checkRoles('ADMIN');
 
 
 module.exports = app;

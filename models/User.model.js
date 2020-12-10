@@ -24,6 +24,11 @@ const userSchema = new Schema(
     passwordHash: {
       type: String,
       required: [true, 'Password is required.']
+    }, 
+    role: {
+      type: String,
+      enum: ['GUEST', 'COMMITTEE', 'APPLICANT', 'ADMIN'],
+      default: 'GUEST'
     }
   },
   {
@@ -32,3 +37,6 @@ const userSchema = new Schema(
 );
 
 module.exports = model('User', userSchema);  
+
+
+

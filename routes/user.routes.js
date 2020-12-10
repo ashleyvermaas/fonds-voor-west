@@ -2,6 +2,9 @@
 const express = require('express');
 const router  = express.Router();
 
+const User = require('../models/User.model');
+const mongoose = require('mongoose');
+
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     // The user is authenticated
@@ -21,7 +24,33 @@ router.get('/profile', (req, res) => {
   res.render('users/user-profile', { user: req.user });
 });
 
+// Route to admin page
+router.get('/admin', (req, res, next) => {
+  User.find()
+  .then((usersFromDB) => {
+    console.log(usersFromDB)
+    res.render('users/admin', {users: usersFromDB});
+  })
+  .catch((error) => next(error));
+});
 
+// Route to delete a user
+router.post('/users/:id/delete', (req, res, next) => {
+  const { id } = req.params;
+
+  User.findByIdAndDelete(id)
+  .then(() => res.redirect('/users/admin'))
+  .catch((error) => next(error));
+});
+
+router.post('/users/:id/edit', (req, res, next) => {
+  const { id } = req.params;
+  const { role } = req.body;
+
+  User.findByIdAndUpdate(id, role, {new: true})
+  .then(() => res.redirect('/admin'))
+  .catch((error) => next(error));
+});
 
 
 module.exports = router;

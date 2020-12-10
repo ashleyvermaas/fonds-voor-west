@@ -1,0 +1,32 @@
+<h1>Admin</h1>
+
+<h1>Edit rolls</h1>
+
+
+{{#each users}}
+<div>
+  <h4>{{firstname}} {{lastname}}</h4>
+  <p>{{email}}</p>
+  <p>{{role}}</p>
+  <a href="/users/{{_id}}/edit">Edit role</a>
+  <form action="/users/{{_id}}/delete" method="POST" onclick="return confirm('Are you sure you want to delete this user?')">
+    <button>Delete</button>
+  </form>
+
+  <form action="/users/{{_id}}/edit" method="POST">
+  <label for="status">Edit role:</label>
+  <select id="status" name="status">
+    <option value="COMMITTEE">COMMITTEE</option>
+    <option value="APPLICANT">APPLICANT</option>
+  </select>
+
+  <button type="submit">Save role</button>
+
+</form>
+
+</div>
+<hr>
+
+{{else}}
+<h2>No project available</h2>
+{{/each}}

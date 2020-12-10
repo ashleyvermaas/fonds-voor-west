@@ -106,10 +106,21 @@ const authRouter = require('./routes/auth.routes');
 app.use('/', authRouter); 
 
 const projectRoutes = require('./routes/project.routes');
-app.use('/', projectRoutes);
+app.use('/',ensureAuthenticated, projectRoutes);
 
 const userRouter = require('./routes/user.routes');
-app.use('/', userRouter); 
+app.use('/',ensureAuthenticated, userRouter); 
+
+// User authentication
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/login');
+  }
+}
+
+
 
 module.exports = app;
 

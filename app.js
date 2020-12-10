@@ -9,6 +9,14 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+// Passport
+const session      = require('express-session');
+const MongoStore   = require('connect-mongo')(session);
+const bcrypt       = require('bcryptjs');
+const passport     = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const User          = require('./models/User.model');
+
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
@@ -44,6 +52,53 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
+// Passport installation
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+    }),
+    resave: true,
+    saveUninitialized: false // <== false if you don't want to save empty session object to the store
+  })
+);
+
+passport.serializeUser((user, done) => done(null, user._id));
+ 
+passport.deserializeUser((id, done) => {
+  User.findById(id)
+    .then(user => done(null, user))
+    .catch(err => done(err));
+});
+
+passport.use(new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback: true,
+},
+    (req, email, password, done) => {
+      User.findOne({ email })
+        .then(user => {
+          if (!user) {
+            return done(null, false, { message: 'Incorrect email' });
+          }
+ 
+          if (!bcrypt.compareSync(password, user.passwordHash)) {
+            return done(null, false, { message: 'Incorrect password' });
+          }
+ 
+          done(null, user);
+        })
+        .catch(err => done(err));
+    }
+  )
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
 const index = require('./routes/index');
 app.use('/', index);
 
@@ -52,6 +107,9 @@ app.use('/', authRouter);
 
 const projectRoutes = require('./routes/project.routes');
 app.use('/', projectRoutes);
+
+const userRouter = require('./routes/user.routes');
+app.use('/', userRouter); 
 
 module.exports = app;
 

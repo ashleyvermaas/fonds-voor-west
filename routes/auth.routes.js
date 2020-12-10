@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
+const passport = require('passport');
 
 // Route to singup page
 router.get('/signup', (req, res, next) => res.render('auth/signup'));
@@ -56,41 +57,26 @@ router.post('/signup', (req, res, next) => {
     }); 
 });
 
-
 // Route to login page
 router.get('/login', (req, res) => res.render('auth/login'));
 
 // Route to check for login/post
 router.post('/login', (req, res, next) => {
-  const { email, password } = req.body;
- 
-  if (email === '' || password === '') {
-    res.render('auth/login', {
-      errorMessage: 'Please enter both, email and password to login.'
-    });
-    return;
-  }
- 
-  User.findOne({ email })
-    .then(user => {
-      if (!user) {
-        res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
-        return;
-      } else if (bcrypt.compareSync(password, user.passwordHash)) {
-        req.session.currentUser = user;
-        res.redirect('/profile');
-
-        // res.render('users/user-profile', { user });
-      } else {
-        res.render('auth/login', { errorMessage: 'Incorrect password.' });
+  passport.authenticate('local', { failureRedirect: "/login"}, (err, theUser) => {
+    if (err) {
+      return next(err);
+    }
+    if (!theUser) {
+      res.render('auth/login', { errorMessage: 'Wrong password or username' });
+      return;
+    }
+    req.login(theUser, err => {
+      if (err) {
+        return next(err);
       }
-    })
-    .catch(error => next(error));
-});
-
-// Route to user profile
-router.get('/profile', (req, res) => {
-  res.render('users/user-profile', { userInSession: req.session.currentUser });
+      res.redirect('/profile');
+    });
+  })(req, res, next);
 });
 
 // Route to logout

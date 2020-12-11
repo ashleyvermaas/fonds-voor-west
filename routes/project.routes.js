@@ -90,7 +90,7 @@ router.post('/projects/:id/evaluate', (req, res, next) => {
   const { id } = req.params;
   const { status } = req.body;
 
-  Project.findByIdAndUpdate(id, status, {new: true})
+  Project.findByIdAndUpdate(id, req.body, {new: true})
   .then(() => res.redirect('/projects'))
   .catch((error) => next(error));
 });

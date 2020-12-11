@@ -1,0 +1,11 @@
+<h1>Edit your accountability report</h1>
+
+<form action="/projects/{{_id}}/accountable/edit" method="POST">
+
+  <label for="accountability-input">Accountability report:</label>
+  <textarea name="accountability" id="accountability-input" cols="40" rows="4">{{accountability}}</textarea>
+
+  <p>Upload files: </p>
+
+  <button type="submit">Submit</button>
+</form>

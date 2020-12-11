@@ -96,22 +96,23 @@ router.post('/projects/:id/evaluate', (req, res, next) => {
 });
 
 
-// Routes to accountability
-router.get('/projects/:id/accountability', (req, res, next) => {
+// Route to view accountability
+router.get('/projects/:id/accountable', (req, res, next) => {
   const { id } = req.params;
 
   Project.findById(id)
-  .then((projectFromDB) => res.render('projects/accountability', projectFromDB))
+  .then((projectFromDB) => res.render('projects/accountable', projectFromDB))
   .catch((error) => next(error));
 });
 
-//post route accountability validation
-router.post('/projects/:id/accountability', (req, res, next) => {
+
+// Route to submit accountability 
+router.post('/projects/:id/accountable', (req, res, next) => {
   const { id } = req.params;
   const { accountability } = req.body;
 
   if(!accountability){
-    res.render('projects/accountability', {errorMessage: 'All fields are mandatory. Please provide answers for all fields'});
+    res.render('projects/accountable', {errorMessage: 'All fields are mandatory. Please provide answers for all fields'});
     return;
   }
 
@@ -119,6 +120,27 @@ router.post('/projects/:id/accountability', (req, res, next) => {
   .then((projectFromDB) => res.render('projects/details', projectFromDB))
   .catch((error) => next(error));
 });
+
+
+// Routes to edit accountability
+router.get('/projects/:id/accountable/edit', (req, res, next) => {
+  const { id } = req.params;
+  const { accountability } = req.body;
+
+  Project.findById(id)
+  .then((projectFromDB) => res.render('projects/accountable-edit', projectFromDB))
+  .catch((error) => next(error));
+});
+
+router.post('/projects/:id/accountable/edit', (req, res, next) => {
+  const { id } = req.params;
+  const { accountability } = req.body;
+
+  Project.findByIdAndUpdate(id, req.body, {new: true})
+  .then((projectFromDB) => res.render('projects/accountable', projectFromDB))
+  .catch((error) => next(error));
+});
+
 
 module.exports = router;
 

@@ -2,10 +2,12 @@
 <h3>{{name}}</h3>
 
 {{#if accountability}}
-<h2>{{accountability}}</h2>
+<p>{{accountability}}</p>
+<a href="/projects/{{_id}}/accountable/edit">Edit</a>
 
 {{else}}
-<form action="/projects/{{_id}}/accountability" method="POST">
+<p>No accountability report available. Please submit.</p>
+<form action="/projects/{{_id}}/accountable" method="POST">
 
   <label for="accountability-input">Accountability report:</label>
   <textarea name="accountability" id="accountability-input" cols="40" rows="4"></textarea>

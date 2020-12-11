@@ -7,12 +7,17 @@
   <p>{{description}}</p>
   <p>{{status}}</p>
 
+  {{#if accountability}}
+  <p>Accountability has been submitted</p>
+  {{else}}
+  <p>Please submit your accountability</p>
+  {{/if}}
 
-<h2>{{accountability}}</h2>
   <a href="/projects/{{_id}}/edit">Edit</a>
-  <a href="/projects/{{_id}}/accountability">Accountability</a>
+  <a href="/projects/{{_id}}/accountable">Accountability</a>
   <a href="/projects/{{_id}}/evaluate">Evaluate</a>
-  <form action="/projects/{{_id}}/delete" method="POST" onclick="return confirm('Are you sure you want to delete this project?')">
+  <form action="/projects/{{_id}}/delete" method="POST"
+    onclick="return confirm('Are you sure you want to delete this project?')">
     <button>Delete</button>
   </form>
 

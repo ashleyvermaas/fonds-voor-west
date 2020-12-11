@@ -4,7 +4,7 @@ const router = express.Router();
 const Project = require('../models/Project.model');
 const mongoose = require('mongoose');
 
-// Route to project-list
+// Route to projects-list
 router.get('/projects', (req, res, next) => {
   const { _id } = req.user;
   Project.find({ owner: _id })
@@ -77,7 +77,7 @@ router.get('/projects/:id/details', (req, res, next) => {
   .catch((error) => next(error));
 });
 
-// Routes to evaluate
+// Routes to evaluate 
 router.get('/projects/:id/evaluate', (req, res, next) => {
   const { id } = req.params;
 

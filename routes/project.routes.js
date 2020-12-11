@@ -91,7 +91,7 @@ router.post('/projects/:id/evaluate', (req, res, next) => {
   const { status } = req.body;
 
   Project.findByIdAndUpdate(id, req.body, {new: true})
-  .then(() => res.redirect('/projects'))
+  .then((projectFromDB) => res.render('projects/details', projectFromDB))
   .catch((error) => next(error));
 });
 

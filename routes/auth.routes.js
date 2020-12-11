@@ -18,7 +18,7 @@ router.post('/signup', (req, res, next) => {
   const {firstname, lastname, email, password} = req.body;
 
   if (!firstname || !lastname || !email || !password) {
-    res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
+    res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your first name, last name, email and password.' });
     return;
   }
 

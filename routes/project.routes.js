@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 // Route to project-list
 router.get('/projects', (req, res, next) => {
-  const { _id } = req.user
+  const { _id } = req.user;
   Project.find({ owner: _id })
   .then((projectsFromDB) => {
     res.render('projects/projects-list', {projects: projectsFromDB});
@@ -105,6 +105,20 @@ router.get('/projects/:id/accountability', (req, res, next) => {
   .catch((error) => next(error));
 });
 
+//post route accountability validation
+router.post('/projects/:id/accountability', (req, res, next) => {
+  const { id } = req.params;
+  const { accountability } = req.body;
+
+  if(!accountability){
+    res.render('projects/accountability', {errorMessage: 'All fields are mandatory. Please provide answers for all fields'});
+    return;
+  }
+
+  Project.findByIdAndUpdate(id, req.body, {new: true})
+  .then((projectFromDB) => res.render('projects/details', projectFromDB))
+  .catch((error) => next(error));
+});
 
 module.exports = router;
 

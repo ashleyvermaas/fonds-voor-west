@@ -77,7 +77,7 @@ router.get('/projects/:id/details', (req, res, next) => {
   .catch((error) => next(error));
 });
 
-// Route to evaluate
+// Routes to evaluate
 router.get('/projects/:id/evaluate', (req, res, next) => {
   const { id } = req.params;
 
@@ -94,6 +94,17 @@ router.post('/projects/:id/evaluate', (req, res, next) => {
   .then((projectFromDB) => res.render('projects/details', projectFromDB))
   .catch((error) => next(error));
 });
+
+
+// Routes to accountability
+router.get('/projects/:id/accountability', (req, res, next) => {
+  const { id } = req.params;
+
+  Project.findById(id)
+  .then((projectFromDB) => res.render('projects/accountability', projectFromDB))
+  .catch((error) => next(error));
+});
+
 
 module.exports = router;
 

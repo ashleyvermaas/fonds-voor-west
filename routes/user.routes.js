@@ -64,5 +64,15 @@ router.post('/users/:id/edit', (req, res, next) => {
   .catch((error) => next(error));
 });
 
+// Routes to settings
+router.get('/settings', (req, res, next) => {
+  if (!req.user) {
+    res.redirect('/login');
+    return;
+  }
+  res.render('users/settings', { user: req.user });
+});
+
+
 
 module.exports = router;

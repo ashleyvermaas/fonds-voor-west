@@ -1,0 +1,23 @@
+<h1>Accountability</h1>
+<h3>{{name}}</h3>
+
+{{#if accountability}}
+<p>{{accountability}}</p>
+<a href="/projects/{{_id}}/accountable/edit">Edit</a>
+
+{{else}}
+<p>No accountability report available. Please submit.</p>
+<form action="/projects/{{_id}}/accountable" method="POST">
+
+  <label for="accountability-input">Accountability report:</label>
+  <textarea name="accountability" id="accountability-input" cols="40" rows="4"></textarea>
+
+  <p>Upload files: </p>
+
+  <button type="submit">Submit</button>
+</form>
+{{/if}}
+
+{{#if errorMessage}}
+<p>{{errorMessage}}</p>
+{{/if}}

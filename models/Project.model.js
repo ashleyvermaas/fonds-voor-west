@@ -27,6 +27,10 @@ const projectSchema = new Schema(
     type: String,
     enum: ['Approve', 'Decline', 'Request', 'Pending'],
     default: 'Pending'
+  },
+  accountability: {
+    type: String,
+    required: [true, 'Accountability is required.']
   }
 }, 
 {

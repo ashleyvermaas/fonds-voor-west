@@ -30,7 +30,6 @@ const projectSchema = new Schema(
   },
   accountability: {
     type: String,
-    required: [true, 'Accountability is required.']
   }
 }, 
 {

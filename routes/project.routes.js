@@ -24,7 +24,7 @@ router.post('/create', (req, res, next) => {
   const { _id } = req.user;
 
   if (!name || !date || !location || !description) {
-    res.render('projects/create', {errorMessage: 'All fields are mandatory. Please provide answers for all fields'});
+    res.render('projects/create', req.user, {errorMessage: 'All fields are mandatory. Please provide answers for all fields'});
     return;
   }
 
@@ -54,7 +54,6 @@ router.get('/projects/:id/edit', (req, res, next) => {
   
   Project.findById(id)
   .then((projectFromDB) => {
-    console.log(projectFromDB); 
     res.render('projects/edit', projectFromDB);})
   .catch((error) => next(error));
 });

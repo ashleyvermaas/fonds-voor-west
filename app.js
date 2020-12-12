@@ -26,11 +26,15 @@ const app = express();
 require('./configs/db.config');
 require('./configs/session.config')(app);
 
+// require handle
+require('./utils/handlebarHelpers');
+
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 
 // Express View engine setup
 
@@ -81,11 +85,11 @@ passport.use(new LocalStrategy({
       User.findOne({ email })
         .then(user => {
           if (!user) {
-            return done(null, false, { message: 'Incorrect email' });
+            return done(null, false, { errorMessage: 'Incorrect email' });
           }
  
           if (!bcrypt.compareSync(password, user.passwordHash)) {
-            return done(null, false, { message: 'Incorrect password' });
+            return done(null, false, { errorMessage: 'Incorrect password' });
           }
  
           done(null, user);
@@ -97,6 +101,12 @@ passport.use(new LocalStrategy({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(function(req,res,next){
+  res.locals.user = req.user;
+  next();
+});
+
 
 // Routes
 const index = require('./routes/index');

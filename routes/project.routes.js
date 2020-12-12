@@ -54,7 +54,6 @@ router.get('/projects/:id/edit', (req, res, next) => {
   
   Project.findById(id)
   .then((projectFromDB) => {
-    console.log(projectFromDB); 
     res.render('projects/edit', projectFromDB);})
   .catch((error) => next(error));
 });

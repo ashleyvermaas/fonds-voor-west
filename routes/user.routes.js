@@ -73,6 +73,15 @@ router.get('/settings', (req, res, next) => {
   res.render('users/settings', { user: req.user });
 });
 
+router.post('/settings', (req, res, next) => {
+  const { _id } = req.user;
+  const { firstname, lastname, email, passwordHash } = req.body;
+
+  User.findByIdAndUpdate(_id, req.body, {new: true})
+  .then(() => res.redirect('/profile'))
+  .catch((error) => next(error));
+});
+
 
 
 module.exports = router;

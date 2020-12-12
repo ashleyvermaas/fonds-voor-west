@@ -1,6 +1,6 @@
 <h1>Admin</h1>
 
-<h1>Edit rolls</h1>
+<h1>Edit roles</h1>
 
 
 {{#each users}}
@@ -8,14 +8,15 @@
   <h4>{{firstname}} {{lastname}}</h4>
   <p>{{email}}</p>
   <p>{{role}}</p>
-  <a href="/users/{{_id}}/edit">Edit role</a>
+  {{!-- <a href="/users/{{_id}}/edit">Edit role</a> --}}
   <form action="/users/{{_id}}/delete" method="POST" onclick="return confirm('Are you sure you want to delete this user?')">
     <button>Delete</button>
   </form>
 
   <form action="/users/{{_id}}/edit" method="POST">
-  <label for="status">Edit role:</label>
-  <select id="status" name="status">
+  <label for="role">Edit role:</label>
+  <select id="role" name="role">
+    <option value="GUEST">GUEST</option>
     <option value="COMMITTEE">COMMITTEE</option>
     <option value="APPLICANT">APPLICANT</option>
   </select>
@@ -28,5 +29,5 @@
 <hr>
 
 {{else}}
-<h2>No project available</h2>
+<h2>No users available</h2>
 {{/each}}

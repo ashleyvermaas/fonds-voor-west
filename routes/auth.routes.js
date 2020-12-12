@@ -67,7 +67,7 @@ router.post('/login', (req, res, next) => {
       return next(err);
     }
     if (!theUser) {
-      res.render('auth/login', { errorMessage: 'Wrong password or username' });
+      res.render('auth/login', { errorMessage: 'Wrong password or email address' });
       return;
     }
     req.login(theUser, err => {

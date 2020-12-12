@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 mongoose
-  .connect('mongodb://localhost/project-2', {
+  .connect(process.env.MONGODB_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true })

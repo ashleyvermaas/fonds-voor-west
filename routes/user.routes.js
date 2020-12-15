@@ -75,7 +75,12 @@ router.get('/settings', (req, res, next) => {
 
 router.post('/settings', (req, res, next) => {
   const { _id } = req.user;
-  const { firstname, lastname, email, passwordHash } = req.body;
+  const { firstname, lastname, email } = req.body;
+
+  if (!firstname || !lastname || !email) {
+    res.render('users/settings', { errorMessage: 'All fields are mandatory. Please provide your first name, last name, email and password.' });
+    return;
+  }
 
   User.findByIdAndUpdate(_id, req.body, {new: true})
   .then(() => res.redirect('/profile'))

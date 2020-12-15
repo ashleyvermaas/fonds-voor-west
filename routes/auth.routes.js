@@ -40,9 +40,22 @@ router.post('/signup', (req, res, next) => {
         passwordHash: hashedPassword
       });
     })
-    .then(userFromDB => {
-      console.log('Newly created user is: ', userFromDB);
-      res.redirect('/profile');
+    .then(theUser => {
+      passport.authenticate('local', { failureRedirect: "/signup"}, (err, theUser) => {
+        if (err) {
+          return next(err);
+        }
+        if (!theUser) {
+          res.render('auth/signup', { errorMessage: 'There was a problem creating your account' });
+          return;
+        }
+        req.login(theUser, err => {
+          if (err) {
+            return next(err);
+          }
+          res.redirect('/profile');
+        });
+      })(req, res, next);
     })
     .catch(error => {
       if (error instanceof mongoose.Error.ValidationError) {

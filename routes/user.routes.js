@@ -64,20 +64,20 @@ router.post('/users/:id/edit', (req, res, next) => {
 });
 
 // Routes to settings
-router.get('/settings', (req, res, next) => {
+router.get('/edit-profile', (req, res, next) => {
   if (!req.user) {
     res.redirect('/login');
     return;
   }
-  res.render('users/settings', { user: req.user });
+  res.render('users/edit-profile', { user: req.user });
 });
 
-router.post('/settings', (req, res, next) => {
+router.post('/edit-profile', (req, res, next) => {
   const { _id } = req.user;
   const { firstname, lastname, email } = req.body;
 
   if (!firstname || !lastname || !email) {
-    res.render('users/settings', { errorMessage: 'All fields are mandatory. Please provide your first name, last name, email and password.' });
+    res.render('users/edit-profile', { errorMessage: 'All fields are mandatory. Please provide your first name, last name, email and password.' });
     return;
   }
 

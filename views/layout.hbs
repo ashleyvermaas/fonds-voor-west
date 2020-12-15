@@ -14,8 +14,11 @@
 <body>
   <nav>
     <a href="/">Home</a>
+
+    {{#if (ifNotLoggedIn user.role)}}
     <a href="/signup">Sign Up</a>
     <a href="/login">Login</a>
+    {{/if}}
 
     {{#if (ifIsCommittee user.role) }}
     <a href="/profile">Profile</a>

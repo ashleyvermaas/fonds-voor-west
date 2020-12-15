@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Project = require('../models/Project.model');
-const User = require('../models/User.model')
+const User = require('../models/User.model');
 const mongoose = require('mongoose');
 
 // Route to projects-list

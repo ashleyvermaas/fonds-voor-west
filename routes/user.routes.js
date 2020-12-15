@@ -40,7 +40,6 @@ router.get('/profile', (req, res) => {
 router.get('/admin', checkAdmin, (req, res, next) => {
   User.find()
   .then((usersFromDB) => {
-    console.log(usersFromDB)
     res.render('users/admin', {users: usersFromDB});
   })
   .catch((error) => next(error));

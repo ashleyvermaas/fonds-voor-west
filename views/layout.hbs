@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +10,40 @@
   <link rel="icon" href="https://www.mensenmakenamsterdam.nl/wp-content/uploads/2020/08/FV-04.jpg">
 
 </head>
+
 <body>
   <nav>
-      <a href="/">Home</a>
-      <a href="/signup">Sign Up</a>
-      <a href="/login">Login</a>
+    <a href="/">Home</a>
+    <a href="/signup">Sign Up</a>
+    <a href="/login">Login</a>
 
-      {{#if (ifIsCommittee user.role) }}
-        <a href="/projects">View Projects</a>
-      {{/if}}
+    {{#if (ifIsCommittee user.role) }}
+    <a href="/profile">Profile</a>
+    <a href="/projects">View Projects</a>
+    {{/if}}
 
-      {{#if (ifIsApplicant user.role) }}
-        <a href="/create">Create new project</a>
-        <a href="/projects">View Projects</a>
-      {{/if}}
-      
-      {{#if (ifIsAdmin user.role) }}
-        <a href="/create">Create new project</a>
-        <a href="/projects">View Projects</a>
-        <a href="/admin">Admin</a>
-        <a href="/settings">Settings</a>
-      {{/if}}
+    {{#if (ifIsApplicant user.role) }}
+    <a href="/profile">Profile</a>
+    <a href="/create">Create new project</a>
+    <a href="/projects">View Projects</a>
+    {{/if}}
 
-      <form id="logout-form" action="/logout" method="POST">
-          <button>Logout</button>
-      </form>
+    {{#if (ifIsAdmin user.role) }}
+    <a href="/profile">Profile</a>
+    <a href="/create">Create new project</a>
+    <a href="/projects">View Projects</a>
+    <a href="/admin">Admin</a>
+    <a href="/settings">Settings</a>
+    {{/if}}
+
+    <form id="logout-form" action="/logout" method="POST">
+      <button>Logout</button>
+    </form>
 
   </nav>
   {{{body}}}
 
   <script src="/javascripts/script.js"></script>
 </body>
+
 </html>

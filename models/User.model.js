@@ -27,9 +27,10 @@ const userSchema = new Schema(
     }, 
     role: {
       type: String,
-      enum: ['GUEST', 'COMMITTEE', 'APPLICANT', 'ADMIN'],
-      default: 'GUEST'
-    }
+      enum: ['COMMITTEE', 'APPLICANT', 'ADMIN'],
+      default: 'APPLICANT'
+    }, 
+    projects: [{ type: Schema.Types.ObjectId, ref: 'Projects' }]
   },
   {
     timestamps: true

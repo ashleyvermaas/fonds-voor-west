@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const Project = require('../models/Project.model');
+const User = require('../models/User.model')
 const mongoose = require('mongoose');
 
 // Route to projects-list
 router.get('/projects', (req, res, next) => {
-  const { _id } = req.user;
-  Project.find({ owner: _id })
+  // const { _id } = req.user;
+  Project.find()
+  .populate('owner')
   .then((projectsFromDB) => {
     res.render('projects/projects-list', {projects: projectsFromDB});
   })
@@ -34,6 +36,10 @@ router.post('/create', (req, res, next) => {
     location, 
     description,
     owner: _id,
+  })
+  .then(dbProject => {
+    return User.findByIdAndUpdate(_id, { $push: { projects: dbProject._id } });
+
   })
   .then(() => res.redirect('/projects'))
   .catch((error) => next(error));

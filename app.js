@@ -15,6 +15,8 @@ const MongoStore   = require('connect-mongo')(session);
 const bcrypt       = require('bcryptjs');
 const passport     = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+
 const User          = require('./models/User.model');
 
 const app_name = require('./package.json').name;
@@ -98,6 +100,18 @@ passport.use(new LocalStrategy({
     }
   )
 );
+
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: "/auth/google/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  User.create({ googleId: profile.id }, function (err, user) {
+    return cb(err, user);
+  });
+}
+));
 
 app.use(passport.initialize());
 app.use(passport.session());

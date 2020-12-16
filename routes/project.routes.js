@@ -5,6 +5,9 @@ const Project = require('../models/Project.model');
 const User = require('../models/User.model');
 const mongoose = require('mongoose');
 
+const fileUploader = require('../configs/cloudinary.config');
+
+
 // Route to projects-list
 router.get('/projects', (req, res, next) => {
   // const { _id } = req.user;

@@ -5,6 +5,9 @@ const router  = express.Router();
 const User = require('../models/User.model');
 const mongoose = require('mongoose');
 
+const fileUploader = require('../configs/cloudinary.config');
+
+
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     // The user is authenticated
@@ -34,8 +37,33 @@ router.get('/profile', (req, res) => {
   res.render('users/user-profile', { user: req.user });
 });
 
+// Routes to edit user-profile
+router.get('/user-profile/:id/edit', (req, res, next) => {
+  const { id } = req.params;
+
+  User.findById(id)
+  .then((userFromDB) => {
+    res.render('users/edit-profile', userFromDB);})
+  .catch((error) => next(error));
+});
+
+// Route to post edit user-profile
+router.post('/user-profile/:id/edit', fileUploader.single('image'),(req, res, next) => {
+  const { id } = req.params;
+  const { firstname, lastname } = req.body;
+
+  let imageUrl;
+  if (req.file) {
+    imageUrl = req.file.path;
+  } else {
+    imageUrl = req.body.existingImage;
+  }
 
 
+  User.findByIdAndUpdate(id, {firstname, lastname, imageUrl}, {new: true})
+  .then(() => res.redirect('/profile'))
+  .catch((error) => next(error));
+});
 // Route to admin page
 router.get('/admin', checkAdmin, (req, res, next) => {
   User.find()
@@ -45,7 +73,7 @@ router.get('/admin', checkAdmin, (req, res, next) => {
   .catch((error) => next(error));
 });
 
-// Route to delete a user
+// Admin route to delete a user
 router.post('/users/:id/delete', (req, res, next) => {
   const { id } = req.params;
 
@@ -54,6 +82,7 @@ router.post('/users/:id/delete', (req, res, next) => {
   .catch((error) => next(error));
 });
 
+// Admin route to edit role user
 router.post('/users/:id/edit', (req, res, next) => {
   const { id } = req.params;
   const { role } = req.body;
@@ -63,28 +92,7 @@ router.post('/users/:id/edit', (req, res, next) => {
   .catch((error) => next(error));
 });
 
-// Routes to settings
-router.get('/edit-profile', (req, res, next) => {
-  if (!req.user) {
-    res.redirect('/login');
-    return;
-  }
-  res.render('users/edit-profile', { user: req.user });
-});
 
-router.post('/edit-profile', (req, res, next) => {
-  const { _id } = req.user;
-  const { firstname, lastname, email } = req.body;
-
-  if (!firstname || !lastname || !email) {
-    res.render('users/edit-profile', { errorMessage: 'All fields are mandatory. Please provide your first name, last name, email and password.' });
-    return;
-  }
-
-  User.findByIdAndUpdate(_id, req.body, {new: true})
-  .then(() => res.redirect('/profile'))
-  .catch((error) => next(error));
-});
 
 
 module.exports = router;

@@ -23,20 +23,24 @@ const userSchema = new Schema(
     },
     passwordHash: {
       type: String,
-      // required: [true, 'Password is required.']
+      required: [true, 'Password is required.']
     }, 
     role: {
       type: String,
       enum: ['COMMITTEE', 'APPLICANT', 'ADMIN'],
       default: 'APPLICANT'
     },
-    googleId: {
-      type: String
-    },   
+    imageUrl: {
+      type: String,
+      default: 'https://via.placeholder.com/150'
+    },
     projects: [{ type: Schema.Types.ObjectId, ref: 'Projects' }]
   },
   {
     timestamps: true
+  },
+  {
+    googleId: String 
   }
 );
 

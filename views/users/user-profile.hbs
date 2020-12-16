@@ -8,17 +8,19 @@
     <h2>Welcome, {{ user.firstname }}!</h2>
     <p>This is your profile page my friend!</p>
 
+    <img src="{{user.imageUrl}}" alt="{{user.firstname}}">
+
     <h3>Name</h3>
     <p>{{user.firstname}} {{user.lastname}}</p>
 
     <h3>Email</h3>
     <p>{{user.email}}</p>
 
-    <button>
-        <a href="/profile">Reload the page</a>
-    </button>
+    <a href="/user-profile/{{user._id}}/edit">Edit</a>
+
+  
 {{else}}
     <p>Still no logged in user, sorry!</p>
 {{/if}}
 
-<a href="/edit-profile">Edit</a>
+

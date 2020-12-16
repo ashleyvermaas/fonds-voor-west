@@ -11,10 +11,9 @@ cloudinary.config({
 });
 
 const storage = new CloudinaryStorage({
-  // cloudinary: cloudinary,
   cloudinary,
   folder: 'fonds-voor-west', // The name of the folder in cloudinary
-  allowedFormats: ['jpg', 'png',  "pdf", "txt"],
+  allowedFormats: ['jpg', 'png', "pdf", "txt"],
   params: { resource_type: 'raw' },
   filename: function (req, file, cb) {
     cb(null, file.originalname); // The file on cloudinary would have the same name as the original file name

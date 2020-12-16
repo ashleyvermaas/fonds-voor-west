@@ -24,7 +24,7 @@ router.get('/create', (req, res, next) => {
   res.render('projects/create');
 });
 
-router.post('/create', (req, res, next) => {
+router.post('/create', fileUploader.single('projectplan'), (req, res, next) => {
   const { name, date, location, description } = req.body;
   const { _id } = req.user;
 
@@ -39,6 +39,7 @@ router.post('/create', (req, res, next) => {
     location, 
     description,
     owner: _id,
+    projectplanUrl: req.file.path,
   })
   .then(dbProject => {
     return User.findByIdAndUpdate(_id, { $push: { projects: dbProject._id } });
@@ -67,11 +68,18 @@ router.get('/projects/:id/edit', (req, res, next) => {
   .catch((error) => next(error));
 });
 
-router.post('/projects/:id/edit', (req, res, next) => {
+router.post('/projects/:id/edit', fileUploader.single('projectplan'), (req, res, next) => {
   const { id } = req.params;
   const { name, date, location, description } = req.body;
 
-  Project.findByIdAndUpdate(id, req.body, {new: true})
+  let projectplanUrl;
+  if (req.file) {
+    projectplanUrl = req.file.path;
+  } else {
+    projectplanUrl = req.body.existingPlan;
+  }
+
+  Project.findByIdAndUpdate(id, {name, date, location, description, projectplanUrl}, {new: true})
   .then(() => res.redirect('/projects'))
   .catch((error) => next(error));
 });

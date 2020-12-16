@@ -1,6 +1,6 @@
 <h1>Apply for funding</h1>
 
-<form action="/create" method="POST">
+<form action="/create" method="POST" enctype="multipart/form-data">
 
 <label for="name-input">Project Name:</label>
 <input type="text" name="name" id="name-input"/>
@@ -13,6 +13,9 @@
 
 <label for="description-input">Description:</label>
 <textarea name="description" id="description-input" cols="30" rows="4"></textarea>
+
+<label for="projectplan-input">Upload projectplan:</label>
+<input type="file" name="projectplan" id="projectplan-input" class="form-control-file" />
 
 <button type="submit">Create</button>
 </form>

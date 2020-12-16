@@ -30,7 +30,9 @@ const projectSchema = new Schema(
   },
   accountability: {
     type: String,
-  }
+  }, 
+  projectplanUrl: String,
+  costingUrl: String,
 }, 
 {
   timestamps: true

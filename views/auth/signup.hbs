@@ -2,10 +2,10 @@
   <h2>Signup</h2>
   <form action="/signup" method="POST">
     <label for="input-first-name">First Name</label>
-    <input type="text" id="input-firstname" name="firstname" placeholder="First name" />
+    <input type="text" id="input-first-name" name="firstname" placeholder="First name" />
 
     <label for="input-last-name">Last Name</label>
-    <input type="text" id="input-lastname" name="lastname" placeholder="Last name" />
+    <input type="text" id="input-last-name" name="lastname" placeholder="Last name" />
 
     <label for="input-email">Email</label>
     <input type="email" id="input-email" name="email" placeholder="Your email" />
@@ -16,7 +16,7 @@
     <button type="submit">Create account</button>
 
     <p>Already have an account? <a href="/login">Login</a> </p>
-    {{!-- error message will be added here --}}
+    
     {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>
     {{/if}}

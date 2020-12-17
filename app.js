@@ -17,6 +17,7 @@ const passport     = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
+
 const User          = require('./models/User.model');
 
 const app_name = require('./package.json').name;
@@ -102,7 +103,16 @@ passport.use(new GoogleStrategy({
   callbackURL: "/auth/google/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
-  User.create({ googleId: profile.id }, function (err, user) {
+  // console.log(email);
+  // console.log(req.user);
+  console.log(profile);
+  User.create({ 
+    firstname: profile.name.givenName, 
+    lastname: profile.name.familyName,
+    email: profile.emails[0].value,
+    googleId: profile.id ,
+    
+  }, function (err, user) {
     return cb(err, user);
   });
 }

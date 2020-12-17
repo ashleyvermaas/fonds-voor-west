@@ -99,7 +99,7 @@ router.post('/logout', (req, res) => {
 });
 
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+  passport.authenticate('google', { scope: ['profile', 'email'], prompt: 'select_account',}));
 
 router.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),

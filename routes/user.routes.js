@@ -59,11 +59,11 @@ router.post('/user-profile/:id/edit', fileUploader.single('image'),(req, res, ne
     imageUrl = req.body.existingImage;
   }
 
-
   User.findByIdAndUpdate(id, {firstname, lastname, imageUrl}, {new: true})
   .then(() => res.redirect('/profile'))
   .catch((error) => next(error));
 });
+
 // Route to admin page
 router.get('/admin', checkAdmin, (req, res, next) => {
   User.find()

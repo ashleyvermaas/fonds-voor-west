@@ -37,7 +37,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
 // Express View engine setup
 
 app.use(require('node-sass-middleware')({
@@ -46,17 +45,13 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
       
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
-
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
-
 
 // Passport installation
 app.use(
@@ -113,8 +108,6 @@ function(accessToken, refreshToken, profile, cb) {
 }
 ));
 
-
-
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -122,7 +115,6 @@ app.use(function(req,res,next){
   res.locals.user = req.user;
   next();
 });
-
 
 // Routes
 const index = require('./routes/index');

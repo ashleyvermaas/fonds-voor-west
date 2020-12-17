@@ -43,7 +43,6 @@ router.post('/create', fileUploader.single('projectplan'), (req, res, next) => {
   })
   .then(dbProject => {
     return User.findByIdAndUpdate(_id, { $push: { projects: dbProject._id } });
-
   })
   .then(() => res.redirect('/projects'))
   .catch((error) => next(error));
@@ -111,7 +110,6 @@ router.post('/projects/:id/evaluate', (req, res, next) => {
   .catch((error) => next(error));
 });
 
-
 // Route to view accountability
 router.get('/projects/:id/accountable', (req, res, next) => {
   const { id } = req.params;
@@ -120,7 +118,6 @@ router.get('/projects/:id/accountable', (req, res, next) => {
   .then((projectFromDB) => res.render('projects/accountable', projectFromDB))
   .catch((error) => next(error));
 });
-
 
 // Route to submit accountability 
 router.post('/projects/:id/accountable', (req, res, next) => {
@@ -136,7 +133,6 @@ router.post('/projects/:id/accountable', (req, res, next) => {
   .then((projectFromDB) => res.render('projects/details', projectFromDB))
   .catch((error) => next(error));
 });
-
 
 // Routes to edit accountability
 router.get('/projects/:id/accountable/edit', (req, res, next) => {

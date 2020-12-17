@@ -1,6 +1,5 @@
 const hbs = require('hbs');
 
-
 //Handlebar register helper
 hbs.registerHelper('ifIsAdmin', (userRole) => {
   return userRole === 'ADMIN';

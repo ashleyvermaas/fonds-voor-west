@@ -10,7 +10,7 @@ const saltRounds = 10;
 
 const passport = require('passport');
 
-// Route to singup page
+// Route to signup page
 router.get('/signup', (req, res, next) => res.render('auth/signup'));
 
 // Route for posting singup

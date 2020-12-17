@@ -24,20 +24,20 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
-// require database configuration
+// Require database configuration
 require('./configs/db.config');
 require('./configs/session.config')(app);
 
-// require handle
+// Require Handlebars
 require('./utils/handlebarHelpers');
 
-// Middleware Setup
+// Middleware setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Express View engine setup
+// Express view engine setup
 
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
@@ -50,7 +50,7 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-// default value for title local
+// Default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
 // Passport installation
@@ -138,7 +138,7 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
-// Rolls authentication
+// Role authentication
 const checkRoles = role => (req, res, next) => {
   if (req.isAuthenticated() && req.user.role === role) {
     return next();

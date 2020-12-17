@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
-const {
-  Schema,
-  model
-} = mongoose;
+const { Schema, model } = mongoose;
 
 const projectSchema = new Schema({
   name: {
@@ -27,14 +24,18 @@ const projectSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['Approve', 'Decline', 'Request', 'Pending'],
+    enum: ['Approved', 'Declined', 'Request', 'Pending'],
     default: 'Pending'
   },
   accountability: {
     type: String,
   },
-  projectplanUrl: String,
-  costingUrl: String,
+  projectplanUrl: {
+    type: String,
+  },
+  costingUrl: {
+    type: String,
+  }
 }, {
   timestamps: true
 });

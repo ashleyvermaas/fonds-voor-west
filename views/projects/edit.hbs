@@ -2,24 +2,22 @@
 
 <form action="/projects/{{_id}}/edit" method="POST">
 
-<label for="name-input">Project Name:</label>
-<input type="text" name="name" id="name-input" value="{{name}}"/>
+  <label for="name-input">Project Name:</label>
+  <input type="text" name="name" id="name-input" value="{{name}}" />
 
-<label for="date-input">Date:</label>
-<input type="date" name="date" id="date-input" value="{{date}}"/>
+  <label for="date-input">Date:</label>
+  <input type="date" name="date" id="date-input" value="{{date}}" />
 
-<p>{{date}}</p>
+  <label for="location-input">Location:</label>
+  <input type="text" name="location" id="location-input" value="{{location}}" />
 
-<label for="location-input">Location:</label>
-<input type="text" name="location" id="location-input" value="{{location}}"/>
+  <label for="description-input">Description:</label>
+  <textarea name="description" id="description-input" cols="30" rows="4">{{description}}</textarea>
 
-<label for="description-input">Description:</label>
-<textarea name="description" id="description-input" cols="30" rows="4">{{description}}</textarea>
+  <label for="projectplan-input">Projectplan:</label>
+  <input type="file" name="projectplan" id="image-input" class="form-control-file" />
+  <input type="text" name="existingPlan" hidden id="" value="{{projectplanUrl}}">
 
-<label for="projectplan-input">Projectplan:</label>
-<input type="file" name="projectplan" id="image-input" class="form-control-file" />
-<input type="text" name="existingPlan" hidden id="" value="{{projectplanUrl}}">
-
-<button type="submit">Save changes</button>
+  <button type="submit">Save changes</button>
 
 </form>

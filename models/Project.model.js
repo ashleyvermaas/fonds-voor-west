@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
-const { Schema, model } = mongoose;
+const {
+  Schema,
+  model
+} = mongoose;
 
-const projectSchema = new Schema(
-{
+const projectSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Name is required.']
@@ -18,7 +20,7 @@ const projectSchema = new Schema(
   description: {
     type: String,
     required: [true, 'Description is required.']
-  }, 
+  },
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -30,13 +32,11 @@ const projectSchema = new Schema(
   },
   accountability: {
     type: String,
-  }, 
+  },
   projectplanUrl: String,
   costingUrl: String,
-}, 
-{
+}, {
   timestamps: true
-}
-);
+});
 
 module.exports = model('Project', projectSchema);

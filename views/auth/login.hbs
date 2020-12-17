@@ -1,4 +1,3 @@
-
 <div id="login">
   <h2>Login</h2>
   <form action="/login" method="POST">
@@ -11,15 +10,14 @@
 
     <button type="submit">Login</button>
 
-    <p>Don't have an account? <a href="/signup">Sign Up</a> </p> 
+    <p>Don't have an account? <a href="/signup">Sign Up</a> </p>
 
-        <a href="/auth/google">Login With Google</a>
+    <a href="/auth/google">Login With Google</a>
 
 
     {{!-- error message will be added here --}}
-      {{#if errorMessage}}
-        <p class="error">{{errorMessage}}</p>
-     {{/if}}
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
   </form>
 </div>
-

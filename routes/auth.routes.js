@@ -15,7 +15,7 @@ router.get('/signup', (req, res, next) => res.render('auth/signup'));
 
 // Route for posting singup
 router.post('/signup', (req, res, next) => {
-  const {firstname, lastname, email, password} = req.body;
+  const { firstname, lastname, email, password } = req.body;
 
   if (!firstname || !lastname || !email || !password) {
     res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your first name, last name, email and password.' });
@@ -26,7 +26,7 @@ router.post('/signup', (req, res, next) => {
   if (!regex.test(password)) {
     res
       .status(500)
-      .render('auth/signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
+      .render('auth/signup', { errorMessage: 'Password needs to have at least 6 characters and must contain at least one number, one lowercase and one uppercase letter.' });
     return;
   }
 
@@ -62,7 +62,7 @@ router.post('/signup', (req, res, next) => {
         res.status(500).render('auth/signup', { errorMessage: error.message });
       } else if (error.code === 11000) {
         res.status(500).render('auth/signup', {
-          errorMessage: 'Email need to be unique. Email is already used.'
+          errorMessage: 'Email needs to be unique. This email is already registered.'
         });
       } else {
         next(error);

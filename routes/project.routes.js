@@ -140,7 +140,7 @@ router.get('/projects/:id/accountable/edit', (req, res, next) => {
   const { accountability } = req.body;
 
   Project.findById(id)
-  .then((projectFromDB) => res.render('projects/accountable-edit', projectFromDB))
+  .then((projectFromDB) => res.render('projects/edit-accountable', projectFromDB))
   .catch((error) => next(error));
 });
 

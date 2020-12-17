@@ -63,7 +63,7 @@ router.get('/projects/:id/edit', (req, res, next) => {
   
   Project.findById(id)
   .then((projectFromDB) => {
-    res.render('projects/edit', projectFromDB);})
+    res.render('projects/edit-project', projectFromDB);})
   .catch((error) => next(error));
 });
 

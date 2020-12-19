@@ -32,8 +32,6 @@ require('./configs/session.config')(app);
 // Require Handlebars
 require('./utils/handlebarHelpers');
 
-require('./utils/googleMaps');
-
 // Middleware setup
 app.use(logger('dev'));
 app.use(bodyParser.json());

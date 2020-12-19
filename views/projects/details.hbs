@@ -9,27 +9,9 @@
 
   <a href="{{projectplanUrl}}">See project plan</a>
 
-
 <h3>Location</h3>
-    <div id="map"></div>
- 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC31u_Bo-GUcbpTMJQ2mo-xmPt7ZT2gYcI"></script>
-    <script>
-      function startMap() {
-  const amsterdamWest = {
-  	lat: 52.37534487676064,
-  	lng: 4.863284933310403};
-  const map = new google.maps.Map(
-    document.getElementById('map'),
-    {
-      zoom: 13,
-      center: amsterdamWest
-    }
-  );
-}
- 
-startMap();
-    </script>
+<div id="map"></div>
+
 
   
 
@@ -47,4 +29,7 @@ startMap();
     <button>Delete</button>
   </form>
 
-</div>
+</div>        
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC31u_Bo-GUcbpTMJQ2mo-xmPt7ZT2gYcI&callback=initMap&libraries=&v=weekly" defer></script>
+ 

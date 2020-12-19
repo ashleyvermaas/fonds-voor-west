@@ -32,6 +32,8 @@ require('./configs/session.config')(app);
 // Require Handlebars
 require('./utils/handlebarHelpers');
 
+require('./utils/googleMaps');
+
 // Middleware setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -102,7 +104,7 @@ passport.use(new GoogleStrategy({
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: "/auth/google/callback"
 },
-function(accessToken, refreshToken, profile, cb) {
+function(accessToken, refreshToken, profile, done) {
   // console.log(email);
   // console.log(req.user);
   console.log(profile);
@@ -113,7 +115,7 @@ function(accessToken, refreshToken, profile, cb) {
     googleId: profile.id ,
     
   }, function (err, user) {
-    return cb(err, user);
+    return done(err, user);
   });
 }
 ));

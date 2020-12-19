@@ -39,9 +39,7 @@ router.post('/create', fileUploader.single('projectplan'), (req, res, next) => {
     location,
     description
   } = req.body;
-  const {
-    _id
-  } = req.user;
+  const { _id } = req.user;
 
   if (!name || !date || !location || !description) {
     res.render('projects/create', req.user, {
@@ -59,10 +57,7 @@ router.post('/create', fileUploader.single('projectplan'), (req, res, next) => {
       projectplanUrl: req.file.path,
     })
     .then(dbProject => {
-      return User.findByIdAndUpdate(_id, {
-        $push: {
-          projects: dbProject._id
-        }
+      return User.findByIdAndUpdate(_id, { $push: { projects: dbProject._id }
       });
     })
     .then(() => res.redirect('/projects'))
@@ -82,9 +77,7 @@ router.post('/projects/:id/delete', (req, res, next) => {
 
 // Routes to edit a project
 router.get('/projects/:id/edit', (req, res, next) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
 
   Project.findById(id)
     .then((projectFromDB) => {
@@ -94,9 +87,7 @@ router.get('/projects/:id/edit', (req, res, next) => {
 });
 
 router.post('/projects/:id/edit', fileUploader.single('projectplan'), (req, res, next) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
   const {
     name,
     date,
@@ -126,9 +117,7 @@ router.post('/projects/:id/edit', fileUploader.single('projectplan'), (req, res,
 
 // Route to project details
 router.get('/projects/:id/details', (req, res, next) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
 
   Project.findById(id)
     .then((projectFromDB) => res.render('projects/details', projectFromDB))
@@ -137,9 +126,7 @@ router.get('/projects/:id/details', (req, res, next) => {
 
 // Routes to evaluate 
 router.get('/projects/:id/evaluate', (req, res, next) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
 
   Project.findById(id)
     .then((projectFromDB) => res.render('projects/evaluate', projectFromDB))
@@ -147,12 +134,8 @@ router.get('/projects/:id/evaluate', (req, res, next) => {
 });
 
 router.post('/projects/:id/evaluate', (req, res, next) => {
-  const {
-    id
-  } = req.params;
-  const {
-    status
-  } = req.body;
+  const { id } = req.params;
+  const { status } = req.body;
 
   Project.findByIdAndUpdate(id, req.body, {
       new: true
@@ -163,9 +146,7 @@ router.post('/projects/:id/evaluate', (req, res, next) => {
 
 // Route to view accountability
 router.get('/projects/:id/accountable', (req, res, next) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
 
   Project.findById(id)
     .then((projectFromDB) => res.render('projects/accountable', projectFromDB))
@@ -174,12 +155,8 @@ router.get('/projects/:id/accountable', (req, res, next) => {
 
 // Route to submit accountability 
 router.post('/projects/:id/accountable', (req, res, next) => {
-  const {
-    id
-  } = req.params;
-  const {
-    accountability
-  } = req.body;
+  const { id } = req.params;
+  const { accountability } = req.body;
 
   if (!accountability) {
     res.render('projects/accountable', {
@@ -188,21 +165,15 @@ router.post('/projects/:id/accountable', (req, res, next) => {
     return;
   }
 
-  Project.findByIdAndUpdate(id, req.body, {
-      new: true
-    })
+  Project.findByIdAndUpdate(id, req.body, { new: true })
     .then((projectFromDB) => res.render('projects/details', projectFromDB))
     .catch((error) => next(error));
 });
 
 // Routes to edit accountability
 router.get('/projects/:id/accountable/edit', (req, res, next) => {
-  const {
-    id
-  } = req.params;
-  const {
-    accountability
-  } = req.body;
+  const { id } = req.params;
+  const { accountability } = req.body;
 
   Project.findById(id)
     .then((projectFromDB) => res.render('projects/edit-accountable', projectFromDB))
@@ -210,16 +181,10 @@ router.get('/projects/:id/accountable/edit', (req, res, next) => {
 });
 
 router.post('/projects/:id/accountable/edit', (req, res, next) => {
-  const {
-    id
-  } = req.params;
-  const {
-    accountability
-  } = req.body;
+  const { id } = req.params;
+  const { accountability } = req.body;
 
-  Project.findByIdAndUpdate(id, req.body, {
-      new: true
-    })
+  Project.findByIdAndUpdate(id, req.body, { new: true })
     .then((projectFromDB) => res.render('projects/accountable', projectFromDB))
     .catch((error) => next(error));
 });

@@ -1,14 +1,21 @@
-<div id="login">
-  <h2>Log in</h2>
+
+<div class="container">
+<div class="card bg-light">
+<article class="card-body mx-auto">
+	<h4 class="card-title mt-3 text-center">Log in</h4>
+
   <form action="/login" method="POST">
+      <div class="mb-3">
+        <label for="input-email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="input-email"  name="email" aria-describedby="emailHelp" placeholder="Your email">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="input-password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="input-password" placeholder="********">
+      </div>
 
-    <label for="input-email">Email:</label>
-    <input type="email" id="input-email" name="email" placeholder="Your email" />
-
-    <label for="input-password">Password:</label>
-    <input type="password" name="password" id="input-password" placeholder="********" />
-
-    <button type="submit">Log in</button>
+      <button type="submit" class="btn btn-primary">Log in</button>
 
     <p>Don't have an account? <a href="/signup">Sign up</a> </p>
 
@@ -17,5 +24,9 @@
     {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>
     {{/if}}
-  </form>
+    </form>
+
+</article>
 </div>
+</div>
+

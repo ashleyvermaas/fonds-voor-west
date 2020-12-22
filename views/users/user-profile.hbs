@@ -1,24 +1,71 @@
-<h1>Profile</h1>
 
-{{!--views/users/user-profile.hbs --}}
+{{!-- Subnav tabbs --}}
 
-{{!-- the new version, with the session: --}}
+<section id="tabs" class="project-tab">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <nav>
+              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                {{#if (ifIsApplicant user.role) }}
+                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
+                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
+                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
+                {{/if}}
+                {{#if (ifIsCommittee user.role) }}
+                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
+                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
+                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
+                {{/if}}
+                {{#if (ifIsAdmin user.role) }}
+                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
+                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
+                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
+                <a class="nav-item nav-link" id="nav-admin-tab" data-toggle="tab" href="/admin" role="tab" aria-controls="nav-admin" aria-selected="false">Admin</a>
+
+                {{/if}}
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+</section>
 
 {{#if user}}
-<h2>Welcome, {{ user.firstname }}!</h2>
-<p>This is your profile page my friend!</p>
 
-<img src="{{user.imageUrl}}" alt="{{user.firstname}}">
+  <div class="container justify-content-center">
+    <h1>Profile</h1>
 
-<h3>Name</h3>
-<p>{{user.firstname}} {{user.lastname}}</p>
+      <div class="card mx-auto" style="width: 80%;">
+        <div class="card-body">
+                <div class="profile-header">
+                  Account Details
+                </div>
 
-<h3>Email</h3>
-<p>{{user.email}}</p>
+              <div class="row align-items-center">
+                  <div class="col">
+                  <h4>First name</h4>
+                  <p>{{user.firstname}}</p>
+                  <h4>Last name</h4>
+                  <p>{{user.lastname}}</p>
+                  <h4>Email</h4>
+                  <p>{{user.email}}</p>
+                </div> 
 
-<a href="/user-profile/{{user._id}}/edit">Edit</a>
-
+                <div class="col">
+                  <img src="{{user.imageUrl}}" alt="{{user.firstname}}">
+                  <p>Profile picture</p>
+                </div>  
+              </div>
+            <a class="btn btn-secondary" href="/user-profile/{{user._id}}/edit">Edit details</a>
+        </div>
+      </div>
+  </div>
 
 {{else}}
 <p>Still no logged in user, sorry!</p>
-{{/if}}
+{{/if}} 
+
+
+
+

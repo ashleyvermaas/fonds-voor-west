@@ -12,81 +12,58 @@
 </head>
 
 <body>
-  {{!-- <nav class="navbar navbar-default ">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="../public/images/FVW_logo_blauw_CMYK_300dpi.jpg" alt="logo-fonds-voor-west" width="30" height="24">
-      </a>
+
+{{!-- Header --}}
+<header id="header" class="fixed-top allign-items-end">
+
+  <nav class="navbar navbar-expand-lg navbar-default justify-content-end">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">FONDS VOOR WEST</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {{#if (ifIsCommittee user.role) }}
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/projects">View Projects</a>
+          </li>
+          {{/if}}
+
+          {{#if (ifIsAdmin user.role) }}
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Admin</a>
+          </li>
+          {{/if}}
+
+          {{#if (ifNotLoggedIn user.role)}}
+          <a class="btn btn-primary" href="/signup">Sign up</a>
+          <a class="btn btn-secondary" href="/login">Log in</a>
+          {{else}}
+          <form id="logout-form" action="/logout" method="POST">
+            <button class="btn btn-secondary">Log out</button>
+          </form>
+          {{/if}}
+
+        </ul>
+      </div>
     </div>
-  </nav> --}}
-
-<nav class="navbar navbar-expand-lg navbar-default">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Fonds voor West</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-
-
-              {{#if (ifIsCommittee user.role) }}
-
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/projects">View Projects</a>
-        </li>    
-            {{/if}}
-
-        {{#if (ifIsApplicant user.role) }}
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/projects">View Projects</a>
-        </li>  
-                <li class="nav-item">
-          <a class="nav-link" href="/create">Create new project</a>
-        </li>   
-            {{/if}}
-
-                {{#if (ifIsAdmin user.role) }}
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/projects">View Projects</a>
-        </li>  
-                <li class="nav-item">
-          <a class="nav-link" href="/create">Create new project</a>
-        </li>   
-                <li class="nav-item">
-          <a class="nav-link" href="/admin">Admin</a>
-        </li>   
-        
-
-            {{/if}}
-
-
-              {{#if (ifNotLoggedIn user.role)}}
-              <a class="btn btn-primary" href="/signup">Sign up</a>
-              <a class="btn btn-secondary" href="/login">Log in</a>
-            {{else}}
-                  <form id="logout-form" action="/logout" method="POST">
-      <button>Log out</button>
-    </form>
-            {{/if}} 
-
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
   </nav>
+</header>
+
+{{!-- Body --}}
+
+  <div class="container">
+
   {{{body}}}
+
+  </div>
+
+
 
   <script src="/javascripts/script.js"></script>
 </body>

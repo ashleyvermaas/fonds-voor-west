@@ -40,6 +40,8 @@ router.post('/create', fileUploader.single('projectplan'), (req, res, next) => {
   } = req.body;
   const { _id } = req.user;
 
+  const {projectplanUrl} = req.file.path;
+
   if (!name || !date || !location || !description) {
     res.render('projects/create', req.user, {
       errorMessage: 'All fields are mandatory. Please provide answers for all fields'
@@ -53,7 +55,7 @@ router.post('/create', fileUploader.single('projectplan'), (req, res, next) => {
       location,
       description,
       owner: _id,
-      projectplanUrl: req.file.path,
+      projectplanUrl,
     })
     .then(dbProject => {
       return User.findByIdAndUpdate(_id, { $push: { projects: dbProject._id }

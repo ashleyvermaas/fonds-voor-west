@@ -3,8 +3,11 @@
   src: url(../../public/stylesheets/GothamBold.otf)
 }
 
+*{
+  font-family: "Gotham Bold";
+}
+
 body {
-  padding: 75px;
   font: 14px;
   font-family: "Gotham Bold";
 }
@@ -43,7 +46,10 @@ body {
   background-color: #f5f5f5;
 }
 
-.bordersforcontainer {
-  border: 1px solid gray;
+.container {
+  padding: 25px;
+}
 
+.border-radius-none{
+    border-radius: 0;
 }

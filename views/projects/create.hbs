@@ -29,13 +29,14 @@
 </section>
 
   <div class="container justify-content-center">
-  <h1>Apply for funding</h1>
 
       <div class="card mx-auto" style="width: 80%;">
         <div class="card-body">
                 <div class="profile-header">
-                  Add new project
+                  <h3>Add new project</h3>
                 </div>
+
+                
 
             <form action="/create" method="POST" enctype="multipart/form-data">
 
@@ -65,22 +66,20 @@
                       <label class="form-label" for="projectplan-input">Upload projectplan:</label>
                       <input class="form-control" type="file" name="projectplan" id="projectplan-input" class="form-control-file" />
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label" for="costing-input">Upload costing:</label>
-                      <input class="form-control" type="file" name="costing" id="costing-input" class="form-control-file" />
-                    </div>
+                    {{!-- <div class="mb-3">
+                      <label class="form-label" for="projectdocs-input">Upload costing:</label>
+                      <input class="form-control" type="file" name="projectdocs" id="projectdocs-input" class="form-control-file" />
+                    </div> --}}
 
                 </div> 
 
                 <div class="col">
-                  <img class="img-fluid" src="{{user.imageUrl}}" alt="{{user.firstname}}">
-                  <input type="file" name="image" id="image-input" class="form-control-file" />
-                  <label for="image-input">Profile picture</label>
+                    <img class="img-fluid" src="https://via.placeholder.com/400x400.png" alt="headerimageplaceholder">
                 </div>
 
               </div>
 
-            <button type="submit" class="btn btn-secondary" value="Geocode">Create project</button>
+            <button type="submit" class="btn btn-primary" value="Geocode">Create project</button>
                 <h4>Location</h4>
                 <div id="map"></div>  
 

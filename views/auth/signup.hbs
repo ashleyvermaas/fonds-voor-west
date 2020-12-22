@@ -1,5 +1,43 @@
+<div class="container justify-content-center">
+      <div class="card-body mx-auto" style="width: 400px;">
+        <div class="card-body">
+                <div class="profile-header">
+                  Create Account
+                </div>
 
-<div class="container">
+            <form action="/signup" method="POST">
+              <div class="mb-3">
+                <label for="input-first-name" class="form-label">First name</label>
+                <input type="text" class="form-control" id="input-first-name" name="firstname" placeholder="First name" />
+              </div>
+              <div class="mb-3">
+                <label for="input-last-name" class="form-label">First name</label>
+                <input type="text" class="form-control" id="input-last-name" name="lastname" placeholder="Last name" />
+              </div>
+              <div class="mb-3">
+                <label for="input-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="input-email" name="email" aria-describedby="emailHelp"
+                  placeholder="Your email">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="input-password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="input-password" placeholder="********">
+              </div>
+            
+              <button type="submit" class="btn btn-primary rounded-0">Create account</button>
+            
+              <p>Already have an account? <a href="/login">Log in</a> </p>
+            
+              {{#if errorMessage}}
+              <p class="error">{{errorMessage}}</p>
+              {{/if}}
+            </form>
+        </div>
+        </div>
+      </div>
+</div>
+{{!-- <div class="container">
 <div class="card bg-light">
 <article class="card-body mx-auto">
 	<h4 class="card-title mt-3 text-center">Create Account</h4>
@@ -34,4 +72,4 @@
 
 </article>
 </div>
-</div>
+</div> --}}

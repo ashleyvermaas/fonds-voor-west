@@ -31,7 +31,10 @@ router.get('/create', (req, res, next) => {
   res.render('projects/create');
 });
 
-router.post('/create', fileUploader.single('projectplan'), (req, res, next) => {
+
+var cpUpload = fileUploader.fields([{ name: 'projectplan', maxCount: 1 }, { name: 'costing', maxCount: 1 }, { name: 'projectimage', maxCount: 1 }])
+
+router.post('/create', cpUpload, (req, res, next) => {
   const {
     name,
     date,
@@ -40,7 +43,10 @@ router.post('/create', fileUploader.single('projectplan'), (req, res, next) => {
   } = req.body;
   const { _id } = req.user;
 
-  const {projectplanUrl} = req.file.path;
+  const {projectplanUrl} = req.files['projectplan'][0];
+  const {costingUrl} = req.files['costing'][0];
+  const {projectImageUrl} = req.files['projectimage'][0];
+
 
   if (!name || !date || !location || !description) {
     res.render('projects/create', req.user, {
@@ -56,6 +62,8 @@ router.post('/create', fileUploader.single('projectplan'), (req, res, next) => {
       description,
       owner: _id,
       projectplanUrl,
+      costingUrl,
+      projectImageUrl,
     })
     .then(dbProject => {
       return User.findByIdAndUpdate(_id, { $push: { projects: dbProject._id }

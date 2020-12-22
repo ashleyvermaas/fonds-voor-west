@@ -61,20 +61,26 @@
               
                     </div>
 
-                
                     <div class="mb-3">
-                      <label class="form-label" for="projectplan-input">Upload projectplan:</label>
+                      <label class="form-label" for="projectimage-input">Upload Project Image:</label>
+                      <input class="form-control" type="file" name="projectimage" id="projectimage-input" class="form-control-file" />
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="projectplan-input">Upload Projectplan:</label>
                       <input class="form-control" type="file" name="projectplan" id="projectplan-input" class="form-control-file" />
                     </div>
-                    {{!-- <div class="mb-3">
-                      <label class="form-label" for="projectdocs-input">Upload costing:</label>
-                      <input class="form-control" type="file" name="projectdocs" id="projectdocs-input" class="form-control-file" />
-                    </div> --}}
-
+                    <div class="mb-3">
+                      <label class="form-label" for="costing-input">Upload Costing:</label>
+                      <input class="form-control" type="file" name="costing" id="costing-input" class="form-control-file" />
+                    </div>
                 </div> 
 
                 <div class="col">
-                    <img class="img-fluid" src="https://via.placeholder.com/400x400.png" alt="headerimageplaceholder">
+                  {{#if project.projectImageUrl}}
+                    <img class="img-fluid" src="{{project.projectImageUrl}}" alt="{{project.projectname}}">
+                  {{else}}
+                    <img class="img-fluid" src="https://www.fondsvoorwest.nl/wp-content/uploads/2020/02/foto3-scaled.jpg" alt="Image placeholder">
+                  {{/if}}
                 </div>
 
               </div>
@@ -91,7 +97,7 @@
       </div>
   </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC31u_Bo-GUcbpTMJQ2mo-xmPt7ZT2gYcI&callback=initMap&libraries=&v=weekly" defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&callback=initMap&libraries=&v=weekly" defer></script>
  
     
 

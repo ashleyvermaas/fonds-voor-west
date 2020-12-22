@@ -35,6 +35,10 @@ const projectSchema = new Schema({
   },
   costingUrl: {
     type: String,
+  },
+  projectImageUrl: {
+    type: String,
+    default: "https://via.placeholder.com/560x420.png"
   }
 }, {
   timestamps: true

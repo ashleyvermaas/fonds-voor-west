@@ -1,14 +1,73 @@
+<section id="tabs" class="project-tab">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <nav>
+              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                {{#if (ifIsApplicant user.role) }}
+                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
+                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
+                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
+                {{/if}}
+                {{#if (ifIsCommittee user.role) }}
+                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
+                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
+                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
+                {{/if}}
+                {{#if (ifIsAdmin user.role) }}
+                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
+                <a class="nav-item nav-link active" id="nav-admin-tab" data-toggle="tab" href="/admin" role="tab" aria-controls="nav-admin" aria-selected="true">Admin</a>
+
+                {{/if}}
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+</section>
+
 <h1>Admin</h1>
 
 <h1>Edit roles</h1>
 
 
 {{#each users}}
-<div>
+
+      <div class="card mx-auto" style="width: 50%;">
+        <div class="card-body">
+                <div class="profile-header">
+                  <h4>{{firstname}} {{lastname}}</h4>
+                </div>
+            <p>Email: {{email}}</p>
+            <p>Current role: {{role}}</p>
+            
+            
+            <form action="/users/{{_id}}/edit" method="POST">
+              <label for="role">Edit role:</label>
+              <select class="form-select" id="role" name="role" aria-label="Default select example">
+                <option selected>Select role</option>
+                <option value="COMMITTEE">COMMITTEE</option>
+                <option value="APPLICANT">APPLICANT</option>
+              </select>           
+              <button class="btn btn-primary rounded-0" type="submit">Save role</button>
+
+              <form action="/users/{{_id}}/delete" method="POST"
+              onclick="return confirm('Are you sure you want to delete this user?')">
+
+              <button class="btn btn-danger rounded-0">Delete</button>
+              </form>
+            
+            </form>
+        </div>
+      </div>
+
+
+{{!-- <div>
   <h4>{{firstname}} {{lastname}}</h4>
   <p>{{email}}</p>
   <p>{{role}}</p>
-  {{!-- <a href="/users/{{_id}}/edit">Edit role</a> --}}
   <form action="/users/{{_id}}/delete" method="POST" onclick="return confirm('Are you sure you want to delete this user?')">
     <button>Delete</button>
   </form>
@@ -25,8 +84,18 @@
 </form>
 
 </div>
-<hr>
+<hr> --}}
 
 {{else}}
 <h2>No users available</h2>
 {{/each}}
+{{!-- 
+<div class="col-md-4">
+  <div class="card">
+    <img class="card-img-top" src="{{this.photo}}" alt="{{this.name}} {{this.lastName}}"/>
+    <div class="card-body">
+      <h5 class="card-title">{{this.name}} {{this.lastName}}</h5>
+      <p class="card-text">{{this.team}}</p>
+    </div>
+  </div>
+</div> --}}

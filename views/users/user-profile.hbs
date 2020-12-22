@@ -1,5 +1,5 @@
 
-{{!-- Subnav tabbs --}}
+    {{!-- Subnav tabbs --}}
 
 <section id="tabs" class="project-tab">
       <div class="container">
@@ -31,36 +31,36 @@
       </div>
 </section>
 
-{{#if user}}
+    {{#if user}}
 
-  <div class="container justify-content-center">
-    <h1>Profile</h1>
+<div class="container justify-content-center">
+  <h1>Profile</h1>
 
-      <div class="card mx-auto" style="width: 80%;">
-        <div class="card-body">
-                <div class="profile-header">
-                  Account Details
-                </div>
-
-              <div class="row align-items-center">
-                  <div class="col">
-                  <h4>First name</h4>
-                  <p>{{user.firstname}}</p>
-                  <h4>Last name</h4>
-                  <p>{{user.lastname}}</p>
-                  <h4>Email</h4>
-                  <p>{{user.email}}</p>
-                </div> 
-
-                <div class="col">
-                  <img src="{{user.imageUrl}}" alt="{{user.firstname}}">
-                  <p>Profile picture</p>
-                </div>  
+    <div class="card mx-auto" style="width: 80%;">
+      <div class="card-body">
+              <div class="profile-header">
+                Account Details
               </div>
-            <a class="btn btn-secondary" href="/user-profile/{{user._id}}/edit">Edit details</a>
-        </div>
+
+            <div class="row align-items-center">
+                <div class="col">
+                <h4>First name</h4>
+                <p>{{user.firstname}}</p>
+                <h4>Last name</h4>
+                <p>{{user.lastname}}</p>
+                <h4>Email</h4>
+                <p>{{user.email}}</p>
+              </div> 
+
+              <div class="col">
+                <img class="img-fluid" src="{{user.imageUrl}}" alt="{{user.firstname}}">
+                <p>Profile picture</p>
+              </div>  
+            </div>
+          <a class="btn btn-secondary" href="/user-profile/{{user._id}}/edit">Edit details</a>
       </div>
-  </div>
+    </div>
+</div>
 
 {{else}}
 <p>Still no logged in user, sorry!</p>

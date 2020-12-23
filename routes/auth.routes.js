@@ -108,5 +108,16 @@ router.get('/auth/google/callback',
     res.redirect('/profile');
   });
 
+// LinkedIn
+router.get('/auth/linkedin',
+  passport.authenticate('linkedin'),
+  function(req, res){
+  });
+
+router.get('/auth/linkedin/callback', 
+  passport.authenticate('linkedin', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/profile');
+  });
 
 module.exports = router;

@@ -1,32 +1,37 @@
 
-<div class="container">
-<div class="card bg-light">
-<article class="card-body mx-auto">
-	<h4 class="card-title mt-3 text-center">Log in</h4>
+<div class="container justify-content-center">
+      <div class="card-body mx-auto" style="width: 500px;">
+        <div class="card-body">
+            <div class="profile-header">Log in</div>
+                
+              <form action="/login" method="POST">
+                        
+                <div class="mb-3">
+                  <label for="input-email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="input-email"  name="email" aria-describedby="emailHelp" placeholder="Your email">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
 
-  <form action="/login" method="POST">
-      <div class="mb-3">
-        <label for="input-email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="input-email"  name="email" aria-describedby="emailHelp" placeholder="Your email">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div class="mb-3">
+                  <label for="input-password" class="form-label">Password</label>
+                  <input type="password" class="form-control" name="password" id="input-password" placeholder="********">
+                </div>
+
+                <button type="submit" class="btn btn-primary rounded-0">Log in</button>
+
+                <p>Don't have an account? <a href="/signup">Sign up</a> </p>
+
+                <a class="loginBtn loginBtn--google" href="/auth/google">Log in with Google</a>
+                <a href="/auth/linkedin">Log in with LinkedIn</a>
+
+                {{#if errorMessage}}
+                  <p class="error">{{errorMessage}}</p>
+                {{/if}}
+              
+              </form>
+          </div>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="input-password" class="form-label">Password</label>
-        <input type="password" class="form-control" name="password" id="input-password" placeholder="********">
-      </div>
-
-      <button type="submit" class="btn btn-primary rounded-0">Log in</button>
-
-    <p>Don't have an account? <a href="/signup">Sign up</a> </p>
-
-    <a href="/auth/google">Log in with Google</a>
-
-    {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-    {{/if}}
-    </form>
-
-</article>
 </div>
-</div>
+
 

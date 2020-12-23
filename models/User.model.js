@@ -40,7 +40,8 @@ const userSchema = new Schema({
 }, {
   timestamps: true
 }, {
-  googleId: String
+  googleId: String,
+  linkedInId: String,
 });
 
 module.exports = model('User', userSchema);

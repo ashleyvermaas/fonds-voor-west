@@ -12,6 +12,16 @@ body {
   font-family: "Gotham Bold";
 }
 
+#header {
+    background-image: url("https://www.fondsvoorwest.nl/wp-content/uploads/2019/02/DSC_5303.jpg");
+    height: 150px;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .navbar-default {
   background-color: #00a6d0;
   border-color: #00a6d0;
@@ -48,6 +58,10 @@ body {
 
 .container {
   padding: 25px;
+}
+
+.card-body {
+  border: rgba(128, 128, 128, 0.527) solid 1px;
 }
 
 .border-radius-none{

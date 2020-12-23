@@ -14,9 +14,9 @@
 <body>
 
 {{!-- Header --}}
-<header id="header" class="fixed-top allign-items-end ">
+<header >
 
-  <nav class="navbar navbar-expand-lg navbar-default justify-content-end">
+  <nav class="navbar navbar-expand-lg navbar-default">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">FONDS VOOR WEST</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -24,22 +24,6 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          {{!-- {{#if (ifIsCommittee user.role) }}
-          <li class="nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/projects">View Projects</a>
-          </li>
-          {{/if}}
-
-          {{#if (ifIsAdmin user.role) }}
-          <li class="nav-item">
-            <a class="nav-link" href="/admin">Admin</a>
-          </li>
-          {{/if}} --}}
-
           {{#if (ifNotLoggedIn user.role)}}
           <a class="btn btn-primary rounded-0" href="/signup">Sign up</a>
           <a class="btn btn-secondary rounded-0" href="/login">Log in</a>
@@ -48,16 +32,15 @@
             <button class="btn btn-secondary rounded-0 ">Log out</button>
           </form>
           {{/if}}
-
-        </ul>
       </div>
     </div>
   </nav>
 </header>
+<div id="header"></div>
 
 {{!-- Body --}}
 
-  <div class="container">
+  <div>
 
   {{{body}}}
 

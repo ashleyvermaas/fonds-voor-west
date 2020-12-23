@@ -18,7 +18,6 @@ const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 
-
 const User          = require('./models/User.model');
 
 const app_name = require('./package.json').name;

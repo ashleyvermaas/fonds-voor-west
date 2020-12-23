@@ -5,17 +5,17 @@
   <p>{{date}}</p>
   <p>{{location}}</p>
   <p>{{description}}</p>
-  <p>{{status}}</p>           
-  
+  <p>{{status}}</p>
+
+  <p>Project by: {{owner.firstname}} {{owner.lastname}}</p>
+
   <a href="{{projectplanUrl}}">See project plan</a>
   <a href="{{costingUrl}}">See costing</a>
   <img src="{{projectImageUrl}}" alt="">
 
-<h3>Location</h3>
-<div id="map"></div>
+  <h3>Location</h3>
+  <div id="map"></div>
 
-
-  
 
   {{#if accountability}}
   <p>Accountability has been submitted</p>
@@ -23,15 +23,28 @@
   <p>Please submit your accountability</p>
   {{/if}}
 
+  {{#if (ifIsApplicant user.role)}}
+  <a href="/projects/{{_id}}/edit">Edit</a>
+  <a href="/projects/{{_id}}/accountable">Accountability</a>
+  {{/if}}
+
+  {{#if (ifIsCommittee user.role)}}
+  <a href="/projects/{{_id}}/evaluate">Evaluate</a>
+  {{/if}}
+
+  {{#if (ifIsAdmin user.role)}}
   <a href="/projects/{{_id}}/edit">Edit</a>
   <a href="/projects/{{_id}}/accountable">Accountability</a>
   <a href="/projects/{{_id}}/evaluate">Evaluate</a>
+  {{/if}}
+
   <form action="/projects/{{_id}}/delete" method="POST"
     onclick="return confirm('Are you sure you want to delete this project?')">
     <button>Delete</button>
   </form>
 
-</div>        
+</div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC31u_Bo-GUcbpTMJQ2mo-xmPt7ZT2gYcI&callback=initMap&libraries=&v=weekly" defer></script>
- 
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC31u_Bo-GUcbpTMJQ2mo-xmPt7ZT2gYcI&callback=initMap&libraries=&v=weekly"
+  defer></script>

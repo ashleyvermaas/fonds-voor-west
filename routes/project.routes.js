@@ -12,6 +12,7 @@ router.get('/projects', (req, res, next) => {
   const { _id } = req.user;
   if (req.user.role === 'APPLICANT') {
     Project.find({ owner: _id })
+      .populate('owner')
       .then((projectsFromDB) => {
         res.render('projects/projects-list', { projects: projectsFromDB });
       })
@@ -32,7 +33,7 @@ router.get('/create', (req, res, next) => {
 });
 
 
-var cpUpload = fileUploader.fields([{ name: 'projectplan', maxCount: 1 }, { name: 'costing', maxCount: 1 }, { name: 'projectimage', maxCount: 1 }])
+var cpUpload = fileUploader.fields([{ name: 'projectplan', maxCount: 1 }, { name: 'costing', maxCount: 1 }, { name: 'projectimage', maxCount: 1 }]);
 
 router.post('/create', cpUpload, (req, res, next) => {
   const {
@@ -87,10 +88,10 @@ router.post('/projects/:id/delete', (req, res, next) => {
 // Routes to edit a project
 router.get('/projects/:id/edit', (req, res, next) => {
   const { id } = req.params;
-
+  
   Project.findById(id)
     .then((projectFromDB) => {
-      res.render('projects/edit-project', projectFromDB);
+      res.render('projects/edit-project', projectFromDB );
     })
     .catch((error) => next(error));
 });
@@ -129,6 +130,7 @@ router.get('/projects/:id/details', (req, res, next) => {
   const { id } = req.params;
 
   Project.findById(id)
+    .populate('owner')
     .then((projectFromDB) => res.render('projects/details', projectFromDB))
     .catch((error) => next(error));
 });
@@ -138,6 +140,7 @@ router.get('/projects/:id/evaluate', (req, res, next) => {
   const { id } = req.params;
 
   Project.findById(id)
+    .populate('owner')
     .then((projectFromDB) => res.render('projects/evaluate', projectFromDB))
     .catch((error) => next(error));
 });

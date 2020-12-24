@@ -77,27 +77,13 @@ body {
   outline: inherit;
 }
 
-.nav-link {
-  /* color: #fafafa; */
-  font-family: "Gotham Bold";
-  text-transform: uppercase;
-}
-
-#header {
+/* HEADER */ 
+#header-img {
   background-image: url("https://www.fondsvoorwest.nl/wp-content/uploads/2019/02/DSC_5303.jpg");
   height: 150px;
-
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.profile-header {
-  background-color: #00a6d0;
-  color: white;
-  text-align: center;
-  padding: 5px;
 }
 
 /* FOOTER */
@@ -124,6 +110,19 @@ footer a:hover {
   color:#00a6d0;
 }
 
+.nav-link {
+  /* color: #fafafa; */
+  font-family: "Gotham Bold";
+  text-transform: uppercase;
+}
+
+.profile-header {
+  background-color: #00a6d0;
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+
 #map {
   height: 500px;
   width: 100%;
@@ -140,7 +139,6 @@ footer a:hover {
 .border-radius-none {
   border-radius: 0;
 }
-
 
 .loginBtn {
   box-sizing: border-box;

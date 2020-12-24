@@ -110,3 +110,15 @@ body {
 .loginBtn--google:focus {
   background: #E74B37;
 }
+
+.image-size{
+  height: 40px;
+  width: 40px;
+}
+
+#image{
+  /* background-color: #edf9fb; */
+  height: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

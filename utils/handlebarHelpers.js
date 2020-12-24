@@ -18,3 +18,19 @@ hbs.registerHelper('ifNotLoggedIn', (userRole) => {
     return true;
   }
 });
+
+// hbs.registerHelper('projectStatus', (status) => {
+//   if (status == 'Approved'){
+//     document.getElementById("project-status").className = "btn btn-success";
+//     // button success
+//   } else if (status == 'Declined'){
+//     document.getElementById("project-status").className = "btn btn-danger";
+//         // button danger
+//   } else if (status == 'Request'){
+//     document.getElementById("project-status").className = "btn btn-info";
+//     // button info
+//   } else {
+//     document.getElementById("project-status").className = "btn btn-warning";
+//     // button warning
+//   }
+// });

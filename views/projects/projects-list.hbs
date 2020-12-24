@@ -1,4 +1,67 @@
-<h1>List of all projects</h1>
+<section id="tabs" class="project-tab">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <nav>
+              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                {{#if (ifIsApplicant user.role) }}
+                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                <a class="nav-item nav-link active" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="true">Projects</a>
+                {{/if}}
+                {{#if (ifIsCommittee user.role) }}
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                <a class="nav-item nav-link active" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="true">Projects</a>
+                {{/if}}
+                {{#if (ifIsAdmin user.role) }}
+                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                <a class="nav-item nav-link active" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="true">Projects</a>
+                <a class="nav-item nav-link" id="nav-admin-tab" data-toggle="tab" href="/admin" role="tab" aria-controls="nav-admin" aria-selected="false">Admin</a>
+                {{/if}}
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+</section>
+
+
+  <div class="container justify-content-center">
+
+      <div class="card mx-auto" style="width: 80%;">
+        <div class="card-body">
+                <div class="profile-header">
+                  <h3>Projects</h3>
+                </div>
+                {{#each projects}}
+
+                <div class="row align-items-center">
+                  <div class="col">
+                    <div class="mb-3">
+                      <h5>Project name: {{name}}</h5>
+                      <p>Date: {{date}}</p>
+                      <p>Location: {{location}}</p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="mb-3 d-flex justify-content-evenly">
+                        <button id="project-status" class="btn btn-success">{{status}}</button>
+                        <a class="btn btn-primary" href="/projects/{{_id}}/details">Details</a>
+                    </div>
+
+                </div>
+                </div>
+
+                {{else}}
+                <h2>No project available</h2>
+                {{/each}}
+        </div>
+      </div>
+  </div>
+
+
+{{!-- <h1>List of all projects</h1>
 
 {{#each projects}}
 <div>
@@ -37,4 +100,4 @@
 
 {{else}}
 <h2>No project available</h2>
-{{/each}}
+{{/each}} --}}

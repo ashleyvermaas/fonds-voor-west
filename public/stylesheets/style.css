@@ -23,6 +23,14 @@ body {
 }
 
 /* NAVBAR */
+
+#navbarNav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
 .navbar-default {
   background-color: #00a6d0;
   border-color: #00a6d0;
@@ -56,6 +64,14 @@ body {
 .navbar-btn-highlight:hover {
   border-color: white;
   color: white;
+}
+
+#logout-form > button {
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  outline: inherit;
 }
 
 .nav-link {

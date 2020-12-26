@@ -131,6 +131,9 @@ footer a:hover {
   width: 100%;
 }
 
+.btn {
+  margin: 5px;
+}
 .container {
   padding: 25px;
 }

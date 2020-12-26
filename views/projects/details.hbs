@@ -65,13 +65,14 @@
 
             </div>
 
-            <div class="d-flex justify-content-between">
+            <div>
                 {{#if accountability}}
                 <p>Accountability has been submitted</p>
                 {{else}}
                 <p>Please submit your accountability</p>
                 {{/if}}
-                
+            </div> 
+           <div class="d-flex justify-content-center">    
                 {{#if (ifIsApplicant user.role)}}
                 <a href="/projects/{{_id}}/edit" class="btn btn-primary" >Edit</a>
                 <a href="/projects/{{_id}}/accountable" class="btn btn-secondary">Accountability</a>
@@ -94,6 +95,7 @@
                     <button class="btn btn-danger">Delete</button>
                   </form>
                 {{/if}}
+                </div>
             </div>
                 <h4>Location</h4>
                 <div id="map"></div>  

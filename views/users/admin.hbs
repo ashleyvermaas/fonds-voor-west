@@ -59,39 +59,17 @@
         </div>
       </div>
 
-
-{{!-- <div>
-  <h4>{{firstname}} {{lastname}}</h4>
-  <p>{{email}}</p>
-  <p>{{role}}</p>
-  <form action="/users/{{_id}}/delete" method="POST" onclick="return confirm('Are you sure you want to delete this user?')">
-    <button>Delete</button>
-  </form>
-
-  <form action="/users/{{_id}}/edit" method="POST">
-  <label for="role">Edit role:</label>
-  <select id="role" name="role">
-    <option value="COMMITTEE">COMMITTEE</option>
-    <option value="APPLICANT">APPLICANT</option>
-  </select>
-
-  <button type="submit">Save role</button>
-
-</form>
-
-</div>
-<hr> --}}
-
 {{else}}
 <h2>No users available</h2>
 {{/each}}
-{{!-- 
-<div class="col-md-4">
-  <div class="card">
-    <img class="card-img-top" src="{{this.photo}}" alt="{{this.name}} {{this.lastName}}"/>
-    <div class="card-body">
-      <h5 class="card-title">{{this.name}} {{this.lastName}}</h5>
-      <p class="card-text">{{this.team}}</p>
-    </div>
-  </div>
-</div> --}}
+
+<h1>NODEMAILER</h1>
+<form action="/send-email" method="post">
+  <label for="">Email</label>
+  <input type="email" name="email" id="">
+  <label for="">Subject</label>
+  <input type="text" name="subject" id="">
+  <label for="">Message</label>
+  <textarea type="text" name="message" id=""></textarea>
+  <button type="submit">Submit</button>
+</form>

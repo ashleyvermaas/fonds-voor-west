@@ -168,6 +168,9 @@ app.use('/',ensureAuthenticated, projectRoutes);
 const userRouter = require('./routes/user.routes');
 app.use('/',ensureAuthenticated, userRouter); 
 
+const mailRouter = require('./routes/mailer.routes');
+app.use('/', mailRouter); 
+
 // User authentication
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {

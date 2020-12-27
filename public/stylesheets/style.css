@@ -193,9 +193,14 @@ footer a:hover {
   background: #E74B37;
 }
 
-.image-size {
-  height: 40px;
-  width: 40px;
+.profile-image-size {
+  max-height: 150px;
+  height: 70%;
+}
+
+.project-image-size {
+  max-height: 420px;
+  height: 70%;
 }
 
 #image {

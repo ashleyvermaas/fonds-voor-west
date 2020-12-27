@@ -121,7 +121,7 @@ function(accessToken, refreshToken, profile, done) {
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_KEY,
   clientSecret: process.env.LINKEDIN_SECRET,
-  callbackURL: "http://localhost:3000/auth/linkedin/callback",
+  callbackURL: "/auth/linkedin/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {

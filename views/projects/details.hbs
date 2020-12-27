@@ -1,5 +1,6 @@
 {{!-- Subnav tabbs --}}
 
+
 <section id="tabs" class="project-tab">
       <div class="container">
         <div class="row">
@@ -98,7 +99,12 @@
                 </div>
             </div>
                 <h4>Location</h4>
-                <div id="map"></div>  
+                <div id="floating-panel">
+                  <input id="address" type="textbox" value="{{location}}" />
+                  <input id="submit" type="button" value="Geocode" />
+                </div>
+                <div id="map"></div>
+               
 
               {{#if errorMessage}}
               <p class="error">{{errorMessage}}</p>
@@ -107,15 +113,8 @@
         </div>
       </div>
   </div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&callback=initMap&libraries=&v=weekly" defer></script>
  
     
-
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}
-
-
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&callback=initMap&libraries=&v=weekly" defer></script>

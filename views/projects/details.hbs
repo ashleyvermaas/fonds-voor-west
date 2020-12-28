@@ -34,7 +34,7 @@
       <div class="card mx-auto" style="width: 80%;">
         <div class="card-body">
                 <div class="profile-header">
-                  <h3>{{name}}</h3>
+                  <h3>Project details</h3>
                 </div>
 
                 
@@ -44,7 +44,7 @@
               <div class="row align-items-center">
                   <div class="col">
                     <div class="mb-3">
-                      {{!-- <h5>Project name: {{name}}</h5> --}}
+                      <h5 >Project name: {{name}}</h5>
                       <p>Date: {{date}}</p>
                       <p>Location: {{location}}</p>
                       <p>Description: {{description}}</p>
@@ -68,7 +68,7 @@
 
             <div>
                 {{#if accountability}}
-                <p>Accountability has been submitted</p>
+                <p >Accountability has been submitted</p>
                 {{else}}
                 <p>Please submit your accountability</p>
                 {{/if}}
@@ -101,7 +101,7 @@
                 <h4>Location</h4>
                 <div id="floating-panel">
                   <input id="address" type="textbox" value="{{location}}" />
-                  <input id="submit" type="button" value="Geocode" />
+                  <input id="submit" type="button" value="View location" />
                 </div>
                 <div id="map"></div>
                

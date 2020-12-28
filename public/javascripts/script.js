@@ -36,10 +36,11 @@ function geocodeAddress(geocoder, resultsMap) {
   });
 }
 
+// querySelector("#userlist")
 
 function projectStatus(){
-  let buttonstatus = document.getElementById("project-status");
-  let buttonvalue = document.getElementById("project-status").childNodes[0].nodeValue;
+  let buttonstatus = document.querySelector("#project-status");
+  let buttonvalue = document.querySelector("#project-status").innerHTML;
 
   if (buttonvalue === 'Approved') {
     buttonstatus.className = "btn btn-success";

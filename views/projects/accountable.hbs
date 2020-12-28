@@ -1,22 +1,38 @@
-<h1>Accountability</h1>
-<h3>{{name}}</h3>
+<div class="container justify-content-center">
+    <div class="card mx-auto" style="width: 80%;">
+      <div class="card-body">
+              <div class="profile-header">
+               <h3> Accountability</h3>
+              </div>
 
-{{#if accountability}}
-<p>{{accountability}}</p>
-<a href="/projects/{{_id}}/accountable/edit">Edit</a>
+            <div class="row align-items-center">
+              <h4>Projectname: {{name}}</h4>
+              {{#if accountability}}
+                  <p>{{accountability}}</p>
+                  <div>
+                  <a class="btn btn-secondary rounded-0" href="/projects/{{_id}}/accountable/edit">Edit</a>
+                  <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Back to project page</a>
+                  </div>
+                  
+              {{else}}
+                  <p>No accountability report available. Please submit.</p>
 
-{{else}}
-<p>No accountability report available. Please submit.</p>
-<form action="/projects/{{_id}}/accountable" method="POST">
+                <form action="/projects/{{_id}}/accountable" method="POST">
+                  <label for="accountability-input">Accountability report:</label>
+                  <textarea class="form-control" name="accountability" id="accountability-input" cols="40" rows="4"></textarea>
 
-  <label for="accountability-input">Accountability report:</label>
-  <textarea name="accountability" id="accountability-input" cols="40" rows="4"></textarea>
+                  <p>Upload files: </p>
 
-  <p>Upload files: </p>
+                  <button class="btn btn-secondary rounded-0" type="submit">Submit</button>
+                </form>
+              {{/if}}
 
-  <button type="submit">Submit</button>
-</form>
-{{/if}}
+              </div>
+            </div>
+      </div>
+    </div>
+</div>
+
 
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>

@@ -51,9 +51,12 @@
                       <input class="form-control" type="date" name="date" id="date-input"/>
                     </div>
                     <div class="mb-3">
+                      <div id="locationField">
                       <label class="form-label" for="location-input">Location:</label>
-                      <input class="form-control" type="text" name="location" id="location-input"/>
-                    </div>
+                      <input class="form-control" name="location" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()"
+                        type="text" /> 
+                        </div>
+                      </div>
 
                     <div class="mb-3">
                       <label class="form-label" for="description-input">Description:</label>
@@ -77,17 +80,21 @@
 
                 <div class="col">
                   {{#if project.projectImageUrl}}
-                    <img class="img-fluid" src="{{project.projectImageUrl}}" alt="{{project.projectname}}">
+                    <img class="img-fluid project-image-size" src="{{project.projectImageUrl}}" alt="{{project.projectname}}">
                   {{else}}
-                    <img class="img-fluid" src="https://www.fondsvoorwest.nl/wp-content/uploads/2020/02/foto3-scaled.jpg" alt="Image placeholder">
+                    <img class="img-fluid project-image-size" src="https://www.fondsvoorwest.nl/wp-content/uploads/2020/02/foto3-scaled.jpg" alt="Image placeholder">
                   {{/if}}
                 </div>
 
               </div>
 
             <button type="submit" class="btn btn-primary" value="Geocode">Create project</button>
-                <h4>Location</h4>
-                <div id="map"></div>  
+                              <h4>Location</h4>
+                              <div id="floating-panel">
+                                <input id="address" type="textbox" value="{{location}}" />
+                                <input id="submit" type="button" value="Geocode" />
+                              </div>
+                              <div id="map"></div>
 
               {{#if errorMessage}}
               <p class="error">{{errorMessage}}</p>
@@ -96,10 +103,12 @@
         </div>
       </div>
   </div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&callback=initMap&libraries=&v=weekly" defer></script>
  
-    
+   <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&callback=initAutocomplete&libraries=places&v=weekly"
+      defer
+    ></script>
+
 
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>

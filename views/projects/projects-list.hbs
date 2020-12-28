@@ -46,8 +46,8 @@
                   </div>
                   <div class="col">
                     <div class="mb-3 d-flex justify-content-evenly">
-                        <button id="project-status" class="btn btn-success">{{status}}</button>
-                        <a class="btn btn-primary" href="/projects/{{_id}}/details">Details</a>
+                        <button id="project-status" class="btn btn-success rounded-0">{{status}}</button>
+                        <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Details</a>
                     </div>
 
                 </div>
@@ -59,45 +59,3 @@
         </div>
       </div>
   </div>
-
-
-{{!-- <h1>List of all projects</h1>
-
-{{#each projects}}
-<div>
-  <h4>Project name: {{name}}</h4>
-  <p>Date: {{date}}</p>
-  <p>Location: {{location}}</p>
-  <p>Description: {{description}}</p>
-  <p>Status: {{status}}</p>
-{{req.user}}
-  <p>Project by: {{owner.firstname}} {{owner.lastname}}</p>
-
-  <a href="/projects/{{_id}}/details">See details</a>
-
-  {{#if (ifIsApplicant user.role)}}
-  <a href="/projects/{{_id}}/edit">Edit</a>
-  <a href="/projects/{{_id}}/accountable">Accountability</a>
-  {{/if}}
-
-  {{#if (ifIsCommittee user.role)}}
-  <a href="/projects/{{_id}}/evaluate">Evaluate</a>
-  {{/if}}
-
-  {{#if (ifIsAdmin user.role)}}
-  <a href="/projects/{{_id}}/edit">Edit</a>
-  <a href="/projects/{{_id}}/accountable">Accountability</a>
-  <a href="/projects/{{_id}}/evaluate">Evaluate</a>
-  {{/if}}
-
-  <form action="/projects/{{_id}}/delete" method="POST"
-    onclick="return confirm('Are you sure you want to delete this project?')">
-    <button>Delete</button>
-  </form>
-  
-</div>
-<hr>
-
-{{else}}
-<h2>No project available</h2>
-{{/each}} --}}

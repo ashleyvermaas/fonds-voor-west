@@ -166,9 +166,16 @@ router.get('/projects/:id/accountable', (req, res, next) => {
 });
 
 // Route to submit accountability 
-router.post('/projects/:id/accountable', (req, res, next) => {
+router.post('/projects/:id/accountable',  fileUploader.single('accountability'), (req, res, next) => {
   const { id } = req.params;
   const { accountability } = req.body;
+
+  let accountabilityUrl;
+  if (req.file) {
+    accountabilityUrl = req.file.path;
+  } else {
+    accountabilityUrl = req.body.existingAccountability;
+  }
 
   if (!accountability) {
     res.render('projects/accountable', {
@@ -177,13 +184,13 @@ router.post('/projects/:id/accountable', (req, res, next) => {
     return;
   }
 
-  Project.findByIdAndUpdate(id, req.body, { new: true })
+  Project.findByIdAndUpdate(id, {accountability, accountabilityUrl}, { new: true })
     .then((projectFromDB) => res.render('projects/details', projectFromDB))
     .catch((error) => next(error));
 });
 
 // Routes to edit accountability
-router.get('/projects/:id/accountable/edit', (req, res, next) => {
+router.get('/projects/:id/accountable/edit',  (req, res, next) => {
   const { id } = req.params;
   const { accountability } = req.body;
 
@@ -192,11 +199,19 @@ router.get('/projects/:id/accountable/edit', (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.post('/projects/:id/accountable/edit', (req, res, next) => {
+router.post('/projects/:id/accountable/edit', fileUploader.single('accountability'), (req, res, next) => {
   const { id } = req.params;
   const { accountability } = req.body;
 
-  Project.findByIdAndUpdate(id, req.body, { new: true })
+
+  let accountabilityUrl;
+  if (req.file) {
+    accountabilityUrl = req.file.path;
+  } else {
+    accountabilityUrl = req.body.existingAccountability;
+  }
+
+  Project.findByIdAndUpdate(id, {accountability, accountabilityUrl}, { new: true })
     .then((projectFromDB) => res.render('projects/accountable', projectFromDB))
     .catch((error) => next(error));
 });

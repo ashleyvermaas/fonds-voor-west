@@ -39,6 +39,9 @@ const projectSchema = new Schema({
   projectImageUrl: {
     type: String,
     default: "https://via.placeholder.com/560x420.png"
+  },
+  accountabilityUrl: {
+    type: String,
   }
 }, {
   timestamps: true

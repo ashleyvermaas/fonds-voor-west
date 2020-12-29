@@ -166,10 +166,6 @@ footer a:hover {
   background-color: #f1f1f1;
 }
 
-.card {
-  border: none
-}
-
 #map {
   height: 400px;
   width: 100%;
@@ -184,7 +180,7 @@ footer a:hover {
 }
 
 .card-body {
-  border: rgba(128, 128, 128, 0.527) solid 1px;
+  border: rgba(128, 128, 128, 0.400) solid 1px;
 }
 
 .border-radius-none {

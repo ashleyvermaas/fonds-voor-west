@@ -21,38 +21,37 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-default">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/"><span class="navbar-brand-highlight">fonds voor west</span></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="navbar-tabs">
+          <div>
+            <a class="navbar-brand" href="/"><span class="navbar-brand-highlight">fonds voor west</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div id="navbar-tabs">
             {{#unless (ifNotLoggedIn user.role)}}
             <ul>
-            {{#if (ifIsApplicant user.role) }}
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/create">Create</a></li>
-            <li><a href="/projects">Projects</a></li>
-
-            {{/if}}
-            {{#if (ifIsCommittee user.role) }}
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/create">Create</a></li>
-            <li><a href="/projects">Projects</a></li>
-            {{/if}}
-            {{#if (ifIsAdmin user.role) }}
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/create">Create</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/admin">Admin</a></li>
-            {{/if}}
+              {{#if (ifIsApplicant user.role) }}
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/create">Create</a></li>
+              <li><a href="/projects">Projects</a></li>
+              {{/if}}
+              {{#if (ifIsCommittee user.role) }}
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/create">Create</a></li>
+              <li><a href="/projects">Projects</a></li>
+              {{/if}}
+              {{#if (ifIsAdmin user.role) }}
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/create">Create</a></li>
+              <li><a href="/projects">Projects</a></li>
+              <li><a href="/admin">Admin</a></li>
+              {{/if}}
             </ul>
             {{/unless}}
-            
           </div>
 
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div id="navbar-auth">
             {{#if (ifNotLoggedIn user.role)}}
             <a class="navbar-btn" href="/signup"><span class="navbar-btn-highlight">Sign up</span></a>
             <a class="navbar-btn" href="/login"><span class="navbar-btn-highlight">Log in</span></a>

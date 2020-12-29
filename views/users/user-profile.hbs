@@ -1,14 +1,12 @@
 {{#if user}}
-
 <div class="container justify-content-center">
-  <div class="card border-0 mx-auto" style="width: 80%;">
-    <div class="card-body">
+  <div class="card border-0 mx-auto" style="width: 70%;">
+    <div class="card-body profile-card">
       <div>
         <h3 class="profile-header">My Profile</h3>
       </div>
-
-      <div class="row align-items-center">
-        <div class="col profile-items">
+      <div class="profile-container">
+        <div class="profile-text">
           <h4>First name</h4>
           <p>{{user.firstname}}</p>
           <h4>Last name</h4>
@@ -17,11 +15,14 @@
           <p>{{user.email}}</p>
         </div>
 
-        <div class="col">
+        <div class="profile-img">
           <img class="img-fluid profile-image-size" src="{{user.imageUrl}}" alt="{{user.firstname}}">
         </div>
+
       </div>
-      <a class="btn btn-secondary rounded-0" href="/user-profile/{{user._id}}/edit">Edit</a>
+      <div class="profile-edit">
+        <a class="btn btn-secondary rounded-0 profile-edit-btn" href="/user-profile/{{user._id}}/edit">Edit</a>
+      </div>
     </div>
   </div>
 </div>

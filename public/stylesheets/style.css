@@ -155,32 +155,74 @@ footer a:hover {
   text-transform: uppercase;
 }
 
+
+/* CARDS */
+.card {
+  margin-top: 20px;
+}
+
 .profile-header {
   background-color: #00a6d0;
   color: white;
   text-align: center;
   padding: 5px;
+  margin-bottom: 30px;
 }
 
 .card-body {
   background-color: #f1f1f1;
-}
-
-#map {
-  height: 400px;
-  width: 100%;
-}
-
-.btn {
-  margin: 5px;
+  border: rgba(128, 128, 128, 0.400) solid 1px;
 }
 
 .container {
   padding: 25px;
 }
 
-.card-body {
-  border: rgba(128, 128, 128, 0.400) solid 1px;
+/* PROFILE */ 
+.profile-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile-edit {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-text p {
+  margin-bottom: 20px;
+  font-size: 17px
+}
+
+.profile-text h4 {
+  color: #00a6d0;
+  font-size: 20px;
+  font-family: "Gotham Medium";
+  margin-bottom: 5px;
+}
+
+.profile-img {
+  margin-bottom: 10px;
+}
+
+.profile-edit {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  margin: 5px;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
 }
 
 .border-radius-none {
@@ -240,7 +282,7 @@ footer a:hover {
 }
 
 .profile-image-size {
-  max-height: 150px;
+  max-height: 160px;
   height: 70%;
 }
 

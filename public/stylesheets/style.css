@@ -162,6 +162,13 @@ footer a:hover {
   padding: 5px;
 }
 
+.card-body {
+  background-color: #f1f1f1;
+}
+
+.card {
+  border: none
+}
 
 #map {
   height: 400px;

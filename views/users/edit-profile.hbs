@@ -1,6 +1,6 @@
 <div class="container justify-content-center">
-  <div class="card border-0 mx-auto" style="width: 80%;">
-    <div class="card-body">
+  <div class="card border-0 mx-auto" style="width: 70%;">
+    <div class="card-body profile-card">
       <div>
         <h3 class="profile-header">Edit profile</h3>
       </div>
@@ -25,13 +25,14 @@
 
           <div class="col">
             <img class="img-fluid profile-image-size" src="{{user.imageUrl}}" alt="{{user.firstname}}">
-            <input type="file" name="image" id="image-input" class="form-control-file" />
-            <label for="image-input">Profile picture</label>
+            <label for="image-input">Upload profile image<input type="file" name="image" id="image-input"
+                class="form-control-file" />
+            </label>
           </div>
         </div>
-
-        <button type="submit" class="btn btn-secondary rounded-0">Save changes</button>
-
+        <div class="profile-edit">
+          <button type="submit" class="btn btn-secondary rounded-0">Save changes</button>
+        </div>
         {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
         {{/if}}

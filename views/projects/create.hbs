@@ -1,116 +1,87 @@
-{{!-- Subnav tabbs --}}
+<div class="container justify-content-center">
 
-<section id="tabs" class="project-tab">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <nav>
-              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                {{#if (ifIsApplicant user.role) }}
-                <a class="nav-item nav-link active" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
-                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
-                {{/if}}
-                {{#if (ifIsCommittee user.role) }}
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
-                {{/if}}
-                {{#if (ifIsAdmin user.role) }}
-                <a class="nav-item nav-link active" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="true">Create</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
-                <a class="nav-item nav-link" id="nav-admin-tab" data-toggle="tab" href="/admin" role="tab" aria-controls="nav-admin" aria-selected="false">Admin</a>
-                {{/if}}
+  <div class="card mx-auto" style="width: 80%;">
+    <div class="card-body">
+      <div class="profile-header">
+        <h3>Add new project</h3>
+      </div>
+
+
+
+      <form action="/create" method="POST" enctype="multipart/form-data">
+
+        <div class="row align-items-center">
+          <div class="col">
+            <div class="mb-3">
+              <label class="form-label" for="name-input">Project name:</label>
+              <input class="form-control" type="text" name="name" id="name-input" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="date-input">Date:</label>
+              <input class="form-control" type="date" name="date" id="date-input" />
+            </div>
+            <div class="mb-3">
+              <div id="locationField">
+                <label class="form-label" for="location-input">Location:</label>
+                <input class="form-control" name="location" id="autocomplete" placeholder="Enter your address"
+                  onFocus="geolocate()" type="text" />
               </div>
-            </nav>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="description-input">Description:</label>
+              <textarea class="form-control" name="description" id="description-input" cols="30" rows="4"></textarea>
+
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="projectimage-input">Upload Project Image:</label>
+              <input class="form-control" type="file" name="projectimage" id="projectimage-input"
+                class="form-control-file" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="projectplan-input">Upload Projectplan:</label>
+              <input class="form-control" type="file" name="projectplan" id="projectplan-input"
+                class="form-control-file" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="costing-input">Upload Costing:</label>
+              <input class="form-control" type="file" name="costing" id="costing-input" class="form-control-file" />
+            </div>
           </div>
+
+          <div class="col">
+            {{#if project.projectImageUrl}}
+            <img class="img-fluid project-image-size" src="{{project.projectImageUrl}}" alt="{{project.projectname}}">
+            {{else}}
+            <img class="img-fluid project-image-size"
+              src="https://www.fondsvoorwest.nl/wp-content/uploads/2020/02/foto3-scaled.jpg" alt="Image placeholder">
+            {{/if}}
+          </div>
+
         </div>
-      </div>
-</section>
 
-  <div class="container justify-content-center">
-
-      <div class="card mx-auto" style="width: 80%;">
-        <div class="card-body">
-                <div class="profile-header">
-                  <h3>Add new project</h3>
-                </div>
-
-                
-
-            <form action="/create" method="POST" enctype="multipart/form-data">
-
-              <div class="row align-items-center">
-                  <div class="col">
-                    <div class="mb-3">
-                      <label class="form-label" for="name-input">Project name:</label>
-                      <input class="form-control" type="text" name="name" id="name-input" />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label" for="date-input">Date:</label>
-                      <input class="form-control" type="date" name="date" id="date-input"/>
-                    </div>
-                    <div class="mb-3">
-                      <div id="locationField">
-                      <label class="form-label" for="location-input">Location:</label>
-                      <input class="form-control" name="location" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()"
-                        type="text" /> 
-                        </div>
-                      </div>
-
-                    <div class="mb-3">
-                      <label class="form-label" for="description-input">Description:</label>
-                      <textarea class="form-control" name="description" id="description-input" cols="30" rows="4"></textarea>
-              
-                    </div>
-
-                    <div class="mb-3">
-                      <label class="form-label" for="projectimage-input">Upload Project Image:</label>
-                      <input class="form-control" type="file" name="projectimage" id="projectimage-input" class="form-control-file" />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label" for="projectplan-input">Upload Projectplan:</label>
-                      <input class="form-control" type="file" name="projectplan" id="projectplan-input" class="form-control-file" />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label" for="costing-input">Upload Costing:</label>
-                      <input class="form-control" type="file" name="costing" id="costing-input" class="form-control-file" />
-                    </div>
-                </div> 
-
-                <div class="col">
-                  {{#if project.projectImageUrl}}
-                    <img class="img-fluid project-image-size" src="{{project.projectImageUrl}}" alt="{{project.projectname}}">
-                  {{else}}
-                    <img class="img-fluid project-image-size" src="https://www.fondsvoorwest.nl/wp-content/uploads/2020/02/foto3-scaled.jpg" alt="Image placeholder">
-                  {{/if}}
-                </div>
-
-              </div>
-
-            <button type="submit" class="btn btn-primary" value="Geocode">Create project</button>
-                              <h4>Location</h4>
-                              <div id="floating-panel">
-                                <input id="address" type="textbox" value="{{location}}" />
-                                <input id="submit" type="button" value="Geocode" />
-                              </div>
-                              <div id="map"></div>
-
-              {{#if errorMessage}}
-              <p class="error">{{errorMessage}}</p>
-              {{/if}}
-          </form>
+        <button type="submit" class="btn btn-primary" value="Geocode">Create project</button>
+        <h4>Location</h4>
+        <div id="floating-panel">
+          <input id="address" type="textbox" value="{{location}}" />
+          <input id="submit" type="button" value="Geocode" />
         </div>
-      </div>
+        <div id="map"></div>
+
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
   </div>
- 
-   <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&callback=initAutocomplete&libraries=places&v=weekly"
-      defer
-    ></script>
+</div>
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&callback=initAutocomplete&libraries=places&v=weekly"
+  defer></script>
 
 
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}
-

@@ -12,7 +12,7 @@
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <script defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&libraries=places&callback=initMap">
-</script>
+    </script>
 </head>
 
 
@@ -26,6 +26,32 @@
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
+          <div class="navbar-tabs">
+            {{#unless (ifNotLoggedIn user.role)}}
+            <ul>
+            {{#if (ifIsApplicant user.role) }}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/create">Create</a></li>
+            <li><a href="/projects">Projects</a></li>
+
+            {{/if}}
+            {{#if (ifIsCommittee user.role) }}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/create">Create</a></li>
+            <li><a href="/projects">Projects</a></li>
+            {{/if}}
+            {{#if (ifIsAdmin user.role) }}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/create">Create</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/admin">Admin</a></li>
+            {{/if}}
+            </ul>
+            {{/unless}}
+            
+          </div>
+
           <div class="collapse navbar-collapse" id="navbarNav">
             {{#if (ifNotLoggedIn user.role)}}
             <a class="navbar-btn" href="/signup"><span class="navbar-btn-highlight">Sign up</span></a>
@@ -48,11 +74,12 @@
     </div>
 
     <footer>
-      <div>A project by <a href="https://github.com/dirkkelderman">Dirk Kelderman</a> and <a href="https://github.com/ashleyvermaas">Ashley Vermaas</a></div>
+      <div>A project by <a href="https://github.com/dirkkelderman">Dirk Kelderman</a> and <a
+          href="https://github.com/ashleyvermaas">Ashley Vermaas</a></div>
       <div>© 2020 D&A productions. All rights reserved.</div>
     </footer>
   </div>
-  
+
   <script src="/javascripts/script.js"></script>
 </body>
 

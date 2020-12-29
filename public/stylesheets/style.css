@@ -90,6 +90,22 @@ body {
   outline: inherit;
 }
 
+.navbar-tabs a{
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-tabs {
+  display: flex;
+  justify-content: flex-end
+}
+
+.navbar-tabs a:hover {
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+
 /* HEADER */ 
 #header-img {
   background-image: url("https://www.fondsvoorwest.nl/wp-content/uploads/2019/02/DSC_5303.jpg");

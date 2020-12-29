@@ -1,36 +1,4 @@
-<section id="tabs" class="project-tab">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <nav>
-              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                {{#if (ifIsApplicant user.role) }}
-                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
-                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
-                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
-                {{/if}}
-                {{#if (ifIsCommittee user.role) }}
-                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
-                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
-                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
-                {{/if}}
-                {{#if (ifIsAdmin user.role) }}
-                <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab" href="/create" role="tab" aria-controls="nav-create" aria-selected="false">Create</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="/profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="/projects" role="tab" aria-controls="nav-project" aria-selected="false">Projects</a>
-                <a class="nav-item nav-link active" id="nav-admin-tab" data-toggle="tab" href="/admin" role="tab" aria-controls="nav-admin" aria-selected="true">Admin</a>
-
-                {{/if}}
-              </div>
-            </nav>
-          </div>
-        </div>
-      </div>
-</section>
-
-
 {{#each users}}
-
       <div class="card mx-auto" style="width: 50%;">
         <div class="card-body">
                 <div class="profile-header">
@@ -58,7 +26,6 @@
             </form>
         </div>
       </div>
-
 {{else}}
 <h2>No users available</h2>
 {{/each}}

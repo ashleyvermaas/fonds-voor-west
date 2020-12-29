@@ -91,7 +91,12 @@ body {
 }
 
 #navbar-tabs {
-  margin: auto;
+  position: absolute;
+  float: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: 2rem;
 }
 
 #navbar-tabs ul {
@@ -104,12 +109,12 @@ body {
   color: white;
   text-decoration: none;
   margin: 0px 20px;
-  font: 20px;
+  font-size: 20px;
 }
 
 #navbar-tabs a:hover {
   color: white;
-  border-bottom: 2px solid white;
+  border-bottom: 3px solid white;
 }
 
 /* HEADER */

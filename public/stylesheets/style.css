@@ -81,7 +81,7 @@
   color: white;
 }
 
-#logout-form > button {
+#logout-form>button {
   border: none;
   padding: 0;
   background: none;
@@ -178,7 +178,7 @@ footer a:hover {
   padding: 25px;
 }
 
-/* PROFILE */ 
+/* PROFILE */
 .profile-card {
   display: flex;
   flex-direction: column;
@@ -190,17 +190,21 @@ footer a:hover {
   align-items: center;
 }
 
-.profile-edit {
+.profile-btn {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-.profile-text p {
+.profile-text p,
+.edit-profile-text input {
   margin-bottom: 20px;
   font-size: 17px
 }
 
-.profile-text h4 {
+.profile-text h4,
+.edit-profile-text label {
   color: #00a6d0;
   font-size: 20px;
   font-family: "Gotham Medium";
@@ -211,14 +215,38 @@ footer a:hover {
   margin-bottom: 10px;
 }
 
-.profile-edit {
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
 
 /* EDIT PROFILE */
+.edit-profile-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 
+.edit-profile-text input {
+  width: 280px
+}
+
+.edit-profile-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-profile-img input {
+  font-size: 13px;
+  font-family: "Gotham Medium";
+  margin-left: 40px;
+  width: 280px;
+}
+
+.edit-profile-img label {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-family: "Gotham Medium";
+  font-size: 14px;
+  color: #00a6d0;
+}
 
 .btn {
   margin: 5px;

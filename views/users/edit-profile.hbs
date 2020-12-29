@@ -1,36 +1,35 @@
 <div class="container justify-content-center">
-  <div class="card border-0 mx-auto" style="width: 70%;">
+  <div class="card border-0 mx-auto" style="width: 65%;">
     <div class="card-body profile-card">
       <div>
         <h3 class="profile-header">Edit profile</h3>
       </div>
 
       <form action="/user-profile/{{user._id}}/edit" method="POST" enctype="multipart/form-data">
-
-        <div class="row align-items-center">
-          <div class="col">
-            <div class="mb-3">
-              <label class="form-label" for="input-first-name">First name:</label>
+        <div class="edit-profile-container">
+          <div>
+            <div class="edit-profile-text">
+              <label class="form-label" for="input-first-name">First name</label>
               <input class="form-control" type="text" id="input-firstname" name="firstname" value="{{firstname}}" />
             </div>
-            <div class="mb-3">
-              <label class="form-label" for="input-last-name">Last name:</label>
+            <div class="edit-profile-text">
+              <label class="form-label" for="input-last-name">Last name</label>
               <input class="form-control" type="text" id="input-lastname" name="lastname" value="{{lastname}}" />
             </div>
-            <div class="mb-3">
-              <label class="form-label" for="input-email">Email:</label>
+            <div class="edit-profile-text">
+              <label class="form-label" for="input-email">Email</label>
               <input class="form-control" type="email" id="input-email" name="email" value="{{email}}" />
             </div>
           </div>
 
-          <div class="col">
+          <div class="edit-profile-img">
             <img class="img-fluid profile-image-size" src="{{user.imageUrl}}" alt="{{user.firstname}}">
-            <label for="image-input">Upload profile image<input type="file" name="image" id="image-input"
-                class="form-control-file" />
-            </label>
+            <label for="image-input">Upload profile image</label>
+            <input type="file" name="image" id="image-input" class="form-control-file" />
           </div>
+
         </div>
-        <div class="profile-edit">
+        <div class="profile-btn">
           <button type="submit" class="btn btn-secondary rounded-0">Save changes</button>
         </div>
         {{#if errorMessage}}

@@ -14,13 +14,12 @@
 }
 
 * {
-  font-family: "Gotham Bold", Arial, sans-serif;
-}
-
-body {
   font: 14px;
   font-family: "Gotham Bold", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
 
 /* CONTAINER */
 .page-container {
@@ -162,7 +161,6 @@ footer a:hover {
   text-align: center;
   padding: 5px;
 }
-
 
 
 #map {

@@ -6,16 +6,13 @@
         <h3 class="profile-header">Projects</h3>
       </div>
 
-      <table class="table table-hover"
-        data-toggle="table"
-        data-search="true"
-        data-show-columns="true">
+      <table class="table table-hover">
   <thead>
     <tr>
-      <th data-field="name" drowspan="2" data-valign="middle" scope="col">Project name</th>
-      <th data-field="date" data-sortable="true" scope="col">Date</th>
-      <th data-field="location" data-sortable="true"scope="col">Location</th>
-      <th data-field="status" data-sortable="true" scope="col">Status</th>
+      <th scope="col">Project name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Location</th>
+      <th scope="col">Status</th>
       <th scope="col">Details</th>
 
     </tr>
@@ -36,6 +33,17 @@
       
       {{/each}}
 
+    {{!-- <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr> --}}
   </tbody>
 </table>
       {{!-- {{#each projects}}

@@ -136,6 +136,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   font-size: 13px;
+  position: relative;
 }
 
 footer a {
@@ -182,6 +183,7 @@ footer a:hover {
 .profile-card {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .profile-container {
@@ -200,7 +202,7 @@ footer a:hover {
 .profile-text p,
 .edit-profile-text input {
   margin-bottom: 20px;
-  font-size: 17px
+  font-size: 17px;
 }
 
 .profile-text h4,
@@ -221,10 +223,12 @@ footer a:hover {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: relative;
 }
 
 .edit-profile-text input {
-  width: 280px
+  max-width: 280px;
+  position: relative;
 }
 
 .edit-profile-img {
@@ -237,7 +241,8 @@ footer a:hover {
   font-size: 13px;
   font-family: "Gotham Medium";
   margin-left: 40px;
-  width: 280px;
+  max-width: 280px;
+  position: relative;
 }
 
 .edit-profile-img label {

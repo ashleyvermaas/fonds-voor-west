@@ -5,7 +5,48 @@
       <div>
         <h3 class="profile-header">Projects</h3>
       </div>
-      {{#each projects}}
+
+      <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Project name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Location</th>
+      <th scope="col">Status</th>
+      <th scope="col">Details</th>
+
+    </tr>
+  </thead>
+  <tbody>
+     {{#each projects}}
+    <tr>
+      <th scope="row"> {{name}}</th>
+      <td>{{date}}</td>
+      <td>{{location}}</td>
+      <td>
+        <button id="project-status" class="btn btn-success rounded-0">{{status}}</button>
+      <td>
+        <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Details</a>
+</td>
+      </td>
+    </tr>
+      
+      {{/each}}
+
+    {{!-- <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr> --}}
+  </tbody>
+</table>
+      {{!-- {{#each projects}}
 
       <div class="row align-items-center">
         <div class="col">
@@ -26,7 +67,7 @@
 
       {{else}}
       <h2>No project available</h2>
-      {{/each}}
+      {{/each}} --}}
     </div>
   </div>
 </div>

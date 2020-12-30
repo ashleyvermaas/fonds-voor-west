@@ -5,7 +5,40 @@
       <div>
         <h3 class="profile-header">Projects</h3>
       </div>
-      {{#each projects}}
+
+      <table class="table table-hover"
+        data-toggle="table"
+        data-search="true"
+        data-show-columns="true">
+  <thead>
+    <tr>
+      <th data-field="name" drowspan="2" data-valign="middle" scope="col">Project name</th>
+      <th data-field="date" data-sortable="true" scope="col">Date</th>
+      <th data-field="location" data-sortable="true"scope="col">Location</th>
+      <th data-field="status" data-sortable="true" scope="col">Status</th>
+      <th scope="col">Details</th>
+
+    </tr>
+  </thead>
+  <tbody>
+     {{#each projects}}
+    <tr>
+      <th scope="row"> {{name}}</th>
+      <td>{{date}}</td>
+      <td>{{location}}</td>
+      <td>
+        <button id="project-status" class="btn btn-success rounded-0">{{status}}</button>
+      <td>
+        <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Details</a>
+</td>
+      </td>
+    </tr>
+      
+      {{/each}}
+
+  </tbody>
+</table>
+      {{!-- {{#each projects}}
 
       <div class="row align-items-center">
         <div class="col">
@@ -26,7 +59,7 @@
 
       {{else}}
       <h2>No project available</h2>
-      {{/each}}
+      {{/each}} --}}
     </div>
   </div>
 </div>

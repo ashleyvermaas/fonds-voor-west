@@ -253,12 +253,53 @@ footer a:hover {
   color: #00a6d0;
 }
 
+/* PROJECT DETAILS */
+.project-details-container {
+  padding: 0px 40px;
+}
+
+.project-details-container p,
+.project-details-container br > a {
+  margin-bottom: 20px;
+}
+
+.project-details-container h5 {
+  font-family: "Gotham Medium";
+  color: #00a6d0;
+  margin-bottom: 3px;
+}
+
+.project-details-container a {
+  text-decoration: none;
+  color: #212529;
+  border-bottom: 2px solid #212529;
+}
+
+.project-details-container a:hover {
+  color: #00a6d0;
+  border-bottom: 2px solid #00a6d0;
+}
+
+.project-details-btns {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+#floating-panel {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+#floating-panel input {
+  padding: 0px 5px;
+}
+
 .btn {
   margin: 5px;
 }
 
 #map {
-  height: 400px;
+  height: 350px;
   width: 100%;
 }
 

@@ -17,6 +17,8 @@ const passport     = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+
 
 const User          = require('./models/User.model');
 
@@ -114,6 +116,26 @@ function(accessToken, refreshToken, profile, done) {
     
   }, function (err, user) {
     return done(err, user);
+  });
+}
+));
+
+passport.use(new FacebookStrategy({
+  clientID: process.env.FACEBOOK_APP_ID,
+  clientSecret: process.env.FACEBOOK_APP_SECRET,
+  callbackURL: "http://localhost:3000/auth/facebook/callback",
+  profileFields: ["email", "name"]
+},
+function(accessToken, refreshToken, profile, cb) {
+  console.log(profile)
+
+  User.create({ 
+    firstname: profile.name.givenName, 
+    lastname: profile.name.familyName,
+    email: profile.email,
+    facebookId: profile.id 
+  }, function (err, user) {
+    return cb(err, user);
   });
 }
 ));

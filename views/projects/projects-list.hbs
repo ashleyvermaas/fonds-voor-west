@@ -24,11 +24,31 @@
               <th scope="row"> {{name}}</th>
               <td>{{date}}</td>
               <td>{{location}}</td>
+
+              {{#if (statusApproved status) }}
               <td>
                 <button id="project-status" class="btn btn-success rounded-0">{{status}}</button>
+              </td>
+              {{/if}}
+
+              {{#if (statusDeclined status) }}
+              <td>
+                <button id="project-status" class="btn btn-danger rounded-0">{{status}}</button>
+              </td>
+              {{/if}}
+
+              {{#if (statusRequest status) }}
+              <td>
+                <button id="project-status" class="btn btn-info rounded-0">{{status}}</button>
+              </td>
+              {{/if}}
+              {{#if (statusPending status)}}
+              <td>
+                <button id="project-status" class="btn btn-warning rounded-0">{{status}}</button>
+              </td>
+              {{/if}}
               <td>
                 <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Details</a>
-              </td>
               </td>
             </tr>
 

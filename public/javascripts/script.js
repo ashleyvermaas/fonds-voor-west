@@ -38,22 +38,22 @@ function geocodeAddress(geocoder, resultsMap) {
 
 // querySelector("#userlist")
 
-function projectStatus(){
-  let buttonstatus = document.querySelector("#project-status");
-  let buttonvalue = document.querySelector("#project-status").innerHTML;
+// function projectStatus(){
+//   let buttonstatus = document.querySelector("#project-status");
+//   let buttonvalue = document.querySelector("#project-status").innerHTML;
 
-  if (buttonvalue === 'Approved') {
-    buttonstatus.className = "btn btn-success";
-  } else if (buttonvalue === 'Declined'){
-    buttonstatus.className = "btn btn-danger";
-  } else if (buttonvalue === 'Request for information') {
-    buttonstatus.className = "btn btn-info";
-  } else {
-    buttonstatus.className = "btn btn-warning";
-  }
-}
+//   if (buttonvalue === 'Approved') {
+//     buttonstatus.className = "btn btn-success";
+//   } else if (buttonvalue === 'Declined'){
+//     buttonstatus.className = "btn btn-danger";
+//   } else if (buttonvalue === 'Request for information') {
+//     buttonstatus.className = "btn btn-info";
+//   } else {
+//     buttonstatus.className = "btn btn-warning";
+//   }
+// }
 
-projectStatus();
+// projectStatus();
 
 let placeSearch;
 let autocomplete;

@@ -27,24 +27,24 @@
 
               {{#if (statusApproved status) }}
               <td>
-                <button id="project-status" class="btn btn-success rounded-0">{{status}}</button>
+                <p id="project-status" class="btn btn-success rounded-0">{{status}}</p>
               </td>
               {{/if}}
 
               {{#if (statusDeclined status) }}
               <td>
-                <button id="project-status" class="btn btn-danger rounded-0">{{status}}</button>
+                <p id="project-status" class="btn btn-danger rounded-0">{{status}}</p>
               </td>
               {{/if}}
 
               {{#if (statusRequest status) }}
               <td>
-                <button id="project-status" class="btn btn-info rounded-0">{{status}}</button>
+                <p id="project-status" class="btn btn-info rounded-0">{{status}}</p>
               </td>
               {{/if}}
               {{#if (statusPending status)}}
               <td>
-                <button id="project-status" class="btn btn-warning rounded-0">{{status}}</button>
+                <p id="project-status" class="btn btn-warning rounded-0">{{status}}</p>
               </td>
               {{/if}}
               <td>

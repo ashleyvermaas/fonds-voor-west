@@ -105,9 +105,6 @@ passport.use(new GoogleStrategy({
   callbackURL: "/auth/google/callback"
 },
 function(accessToken, refreshToken, profile, done) {
-  // console.log(email);
-  // console.log(req.user);
-  console.log(profile);
   User.create({ 
     firstname: profile.name.givenName, 
     lastname: profile.name.familyName,
@@ -147,9 +144,6 @@ passport.use(new LinkedInStrategy({
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {
-  // asynchronous verification, for effect...
-  // console.log(profile);
-
   User.create({
     firstname: profile.name.givenName, 
     lastname: profile.name.familyName,
@@ -161,13 +155,6 @@ passport.use(new LinkedInStrategy({
   };
 }));
 
-// process.nextTick(function () {
-//   // To keep the example simple, the user's LinkedIn profile is returned to
-//   // represent the logged-in user. In a typical application, you would want
-//   // to associate the LinkedIn account with a user record in your database,
-//   // and return that user instead.
-//   return done(null, profile);
-// });
 
 app.use(passport.initialize());
 app.use(passport.session());

@@ -375,3 +375,12 @@ footer a:hover {
   padding-top: 15px;
   padding-bottom: 15px;
 }
+
+.error {
+  background: #f02b63;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
+}

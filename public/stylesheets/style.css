@@ -303,6 +303,20 @@ footer a:hover {
   width: 100%;
 }
 
+#evaluation-form label {
+  font-size: 20px;
+  color: #00a6d0;
+}
+
+#evaluation-form select {
+  width: 150px;
+  height: 25px;
+}
+
+#evaluation-form option {
+  text-align: center;
+}
+
 .border-radius-none {
   border-radius: 0;
 }

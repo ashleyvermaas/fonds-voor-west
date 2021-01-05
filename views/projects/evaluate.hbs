@@ -30,15 +30,15 @@
           </div>
         </div>
 
-        <form action="/projects/{{_id}}/evaluate" method="POST">
-          <label for="status">Select evaluation:</label>
+        <form action="/projects/{{_id}}/evaluate" method="POST" id="evaluation-form">
+          <label class="form-label" for="status">Select evaluation:</label>
           <select id="status" name="status">
             <option name="Approved" value="Approved">Approve</option>
             <option name="Declined" value="Declined">Decline</option>
             <option name="Request" value="Request">Request</option>
           </select>
 
-          <button type="submit">Save evaluation</button>
+          <button type="submit" class="btn btn-primary">Save evaluation</button>
 
         </form>
       </div>

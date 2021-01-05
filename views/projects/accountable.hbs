@@ -1,43 +1,38 @@
-<div class="container justify-content-center">
-    <div class="card border-0 mx-auto" style="width: 80%;">
-      <div class="card-body">
-              <div>
-               <h3 class="profile-header"> Accountability</h3>
-              </div>
+<div>
+  <h3 class="profile-header"> Accountability</h3>
+</div>
 
-            <div class="row align-items-center">
-              <h4>Projectname: {{name}}</h4>
-              {{#if accountability}}
-                  <p>{{accountability}}</p>
-                  <a href="{{accountabilityUrl}}">See files</a>
-                  <div>
-                  <a class="btn btn-secondary rounded-0" href="/projects/{{_id}}/accountable/edit">Edit</a>
-                  <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Back to project page</a>
-                  </div>
-                  
-              {{else}}
-                  <p>No accountability report available. Please submit.</p>
+<div class="row align-items-center">
+  <h4>Projectname: {{name}}</h4>
+  {{#if accountability}}
+  <p>{{accountability}}</p>
+  <a href="{{accountabilityUrl}}">See files</a>
+  <div>
+    <a class="btn btn-secondary rounded-0" href="/projects/{{_id}}/accountable/edit">Edit</a>
+    <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Back to project page</a>
+  </div>
 
-                <form action="/projects/{{_id}}/accountable" method="POST" enctype="multipart/form-data">
-                  <label for="accountability-input">Accountability report:</label>
-                  <textarea class="form-control" name="accountability" id="accountability-input" cols="40" rows="4"></textarea>
+  {{else}}
+  <p>No accountability report available. Please submit.</p>
 
-                  <div class="mb-3">
-                    <label class="form-label" for="accountability-input">Upload files:</label>
-                    <input class="form-control" type="file" name="accountability" id="accountability-input" class="form-control-file" />
-                  </div>
+  <form action="/projects/{{_id}}/accountable" method="POST" enctype="multipart/form-data">
+    <label for="accountability-input">Accountability report:</label>
+    <textarea class="form-control" name="accountability" id="accountability-input" cols="40" rows="4"></textarea>
 
-                  <button class="btn btn-secondary rounded-0" type="submit">Submit</button>
-                </form>
-              {{/if}}
-
-              </div>
-            </div>
-      </div>
+    <div class="mb-3">
+      <label class="form-label" for="accountability-input">Upload files:</label>
+      <input class="form-control" type="file" name="accountability" id="accountability-input"
+        class="form-control-file" />
     </div>
+
+    <button class="btn btn-secondary rounded-0" type="submit">Submit</button>
+  </form>
+  {{/if}}
+
 </div>
 
 
+
 {{#if errorMessage}}
-<p>{{errorMessage}}</p>
+<p class="error">{{errorMessage}}</p>
 {{/if}}

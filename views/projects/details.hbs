@@ -1,91 +1,79 @@
-<div class="container justify-content-center">
-
-  <div class="card border-0 mx-auto" style="width: 80%;">
-    <div class="card-body">
+<div>
+  <h3 class="profile-header">Project details</h3>
+</div>
+<div class="project-details-container">
+  <div>
+    <div class="row ">
+      <div class="col">
+        <div class="mb-3">
+          <h5>Project name:</h5>
+          <p>{{name}}</p>
+          <h5>Date:</h5>
+          <p>{{date}}</p>
+          <h5>Location:</h5>
+          <p>{{location}}</p>
+          <h5>Description:</h5>
+          <p>{{description}}</p>
+          <h5>Status:</h5>
+          <p>{{status}}</p>
+        </div>
+        <div class="mb-3">
+          <h5>Additional files:</h5>
+          <a href="{{projectplanUrl}}">View project plan</a><br>
+          <a href="{{costingUrl}}">View costing</a>
+        </div>
+      </div>
+      <div class="col">
+        {{#if project.projectImageUrl}}
+        <img class="img-fluid project-image-size" src="{{project.projectImageUrl}}" alt="{{project.projectname}}">
+        {{else}}
+        <img class="img-fluid project-image-size"
+          src="https://www.fondsvoorwest.nl/wp-content/uploads/2020/02/foto3-scaled.jpg" alt="Image placeholder">
+        {{/if}}
+      </div>
       <div>
-        <h3 class="profile-header">Project details</h3>
-      </div>
-      <div class="project-details-container">
-        <div>
-          <div class="row ">
-            <div class="col">
-              <div class="mb-3">
-                <h5>Project name:</h5>
-                <p>{{name}}</p>
-                <h5>Date:</h5>
-                <p>{{date}}</p>
-                <h5>Location:</h5>
-                <p>{{location}}</p>
-                <h5>Description:</h5>
-                <p>{{description}}</p>
-                <h5>Status:</h5>
-                <p>{{status}}</p>
-              </div>
-              <div class="mb-3">
-                <h5>Additional files:</h5>
-                <a href="{{projectplanUrl}}">View project plan</a><br>
-                <a href="{{costingUrl}}">View costing</a>
-              </div>
-            </div>
-            <div class="col">
-              {{#if project.projectImageUrl}}
-              <img class="img-fluid project-image-size" src="{{project.projectImageUrl}}" alt="{{project.projectname}}">
-              {{else}}
-              <img class="img-fluid project-image-size"
-                src="https://www.fondsvoorwest.nl/wp-content/uploads/2020/02/foto3-scaled.jpg" alt="Image placeholder">
-              {{/if}}
-            </div>
-            <div>
-              <h5>Accountability:</h5>
-              {{#if accountability}}
-              <p>The accountability form has been submitted</p>
-              {{else}}
-              <p>The accountability form has not been submitted yet</p>
-              {{/if}}
-            </div>
-          </div>
-        </div>
-        <h5>Location:</h5>
-        <div id="floating-panel">
-          <input id="address" type="textbox" value="{{location}}" />
-          <input id="submit" type="button" value="Search" />
-        </div>
-        <div id="map"></div>
-      </div>
-      <div class="d-flex justify-content-center project-details-btns">
-        {{#if (ifIsApplicant user.role)}}
-        <a href="/projects/{{_id}}/edit" class="btn btn-secondary">Edit</a>
-        <a href="/projects/{{_id}}/accountable" class="btn btn-primary">Accountability</a>
-        <form action="/projects/{{_id}}/delete" method="POST"
-          onclick="return confirm('Are you sure you want to delete this project?')">
-          <button class="btn btn-danger">Delete</button>
-        </form>
-        {{/if}}
-
-        {{#if (ifIsCommittee user.role)}}
-        <a href="/projects/{{_id}}/evaluate" class="btn btn-primary">Evaluate</a>
-        {{/if}}
-
-        {{#if (ifIsAdmin user.role)}}
-        <a href="/projects/{{_id}}/edit" class="btn btn-secondary">Edit</a>
-        <a href="/projects/{{_id}}/accountable" class="btn btn-primary">Accountability</a>
-        <a href="/projects/{{_id}}/evaluate" class="btn btn-primary">Evaluate</a>
-        <form action="/projects/{{_id}}/delete" method="POST"
-          onclick="return confirm('Are you sure you want to delete this project?')">
-          <button class="btn btn-danger">Delete</button>
-        </form>
+        <h5>Accountability:</h5>
+        {{#if accountability}}
+        <p>The accountability form has been submitted</p>
+        {{else}}
+        <p>The accountability form has not been submitted yet</p>
         {{/if}}
       </div>
-
-      {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-      {{/if}}
     </div>
   </div>
+  <h5>Location:</h5>
+  <div id="floating-panel">
+    <input id="address" type="textbox" value="{{location}}" />
+    <input id="submit" type="button" value="Search" />
+  </div>
+  <div id="map"></div>
 </div>
-</div>
+<div class="d-flex justify-content-center project-details-btns">
+  {{#if (ifIsApplicant user.role)}}
+  <a href="/projects/{{_id}}/edit" class="btn btn-secondary">Edit</a>
+  <a href="/projects/{{_id}}/accountable" class="btn btn-primary">Accountability</a>
+  <form action="/projects/{{_id}}/delete" method="POST"
+    onclick="return confirm('Are you sure you want to delete this project?')">
+    <button class="btn btn-danger">Delete</button>
+  </form>
+  {{/if}}
 
+  {{#if (ifIsCommittee user.role)}}
+  <a href="/projects/{{_id}}/evaluate" class="btn btn-primary">Evaluate</a>
+  {{/if}}
+
+  {{#if (ifIsAdmin user.role)}}
+  <a href="/projects/{{_id}}/edit" class="btn btn-secondary">Edit</a>
+  <a href="/projects/{{_id}}/accountable" class="btn btn-primary">Accountability</a>
+  <a href="/projects/{{_id}}/evaluate" class="btn btn-primary">Evaluate</a>
+  <form action="/projects/{{_id}}/delete" method="POST"
+    onclick="return confirm('Are you sure you want to delete this project?')">
+    <button class="btn btn-danger">Delete</button>
+  </form>
+  {{/if}}
+</div>
 
 {{#if errorMessage}}
-<p>{{errorMessage}}</p>
+<p class="error">{{errorMessage}}</p>
 {{/if}}
+</div>

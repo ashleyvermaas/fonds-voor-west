@@ -1,32 +1,27 @@
-<div class="container justify-content-center">
-  <div class="card border-0 mx-auto" style="width: 80%;">
-    <div class="card-body">
-      <div>
-        <h3 class="profile-header"> Edit your accountability report</h3>
-      </div>
-
-      <div class="row align-items-center">
-        <h4>Projectname: {{name}}</h4>
-
-        <form action="/projects/{{_id}}/accountable/edit" method="POST" enctype="multipart/form-data">
-          <label for="accountability-input">Accountability report:</label>
-          <textarea class="form-control" name="accountability" id="accountability-input" cols="40" rows="4" >{{accountability}}</textarea>
-
-            <div class="mb-3">
-              <label class="form-label" for="accountability-input">Upload files:</label>
-              <input class="form-control" type="file" name="accountability" id="accountability-input" class="form-control-file" />
-              <input type="text" name="existingAccountability" hidden id="" value="{{accountabilityUrl}}">
-            </div>
-
-          <div>
-          <button class="btn btn-secondary rounded-0" type="submit">Submit</button>
-          <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Back to project page</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+<div>
+  <h3 class="profile-header"> Edit your accountability report</h3>
 </div>
+
+<div class="row align-items-center">
+  <h4>Projectname: {{name}}</h4>
+
+  <form action="/projects/{{_id}}/accountable/edit" method="POST" enctype="multipart/form-data">
+    <label for="accountability-input">Accountability report:</label>
+    <textarea class="form-control" name="accountability" id="accountability-input" cols="40"
+      rows="4">{{accountability}}</textarea>
+
+    <div class="mb-3">
+      <label class="form-label" for="accountability-input">Upload files:</label>
+      <input class="form-control" type="file" name="accountability" id="accountability-input"
+        class="form-control-file" />
+      <input type="text" name="existingAccountability" hidden id="" value="{{accountabilityUrl}}">
+    </div>
+
+    <div>
+      <button class="btn btn-secondary rounded-0" type="submit">Submit</button>
+      <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Back to project page</a>
+    </div>
+  </form>
 </div>
 
 

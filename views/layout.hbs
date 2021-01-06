@@ -8,8 +8,8 @@
   <title>Fonds voor West</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <link rel="icon" href="https://www.mensenmakenamsterdam.nl/wp-content/uploads/2020/08/FV-04.jpg">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
   <script defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&libraries=places&callback=initMap">
     </script>
@@ -17,9 +17,55 @@
 
 
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-default">
+  <div class="container-fluid">
+    <a class="navbar-brand " href="/"><span class="navbar-brand-highlight">fonds voor west</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+      {{#unless (ifNotLoggedIn user.role)}}
+    
+      <ul class="navbar-nav">
+        {{#if (ifIsApplicant user.role) }}
+        <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="/create">Create</a></li>
+        <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+        {{/if}}
+        {{#if (ifIsCommittee user.role) }}
+        <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="/create">Create</a></li>
+        <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+        {{/if}}
+        {{#if (ifIsAdmin user.role) }}
+        <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="/create">Create</a></li>
+        <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
+        {{/if}}
+        
+      </ul>
+      {{/unless}}
+            <div id="navbar-auth">
+            {{#if (ifNotLoggedIn user.role)}}
+            <a class="navbar-btn" href="/signup"><span class="navbar-btn-highlight">Sign up</span></a>
+            <a class="navbar-btn" href="/login"><span class="navbar-btn-highlight">Log in</span></a>
+            {{else}}
+            <form id="logout-form" action="/logout" method="POST">
+              <button class="navbar-btn"><span class="navbar-btn-highlight">Log out</span></button>
+            </form>
+            {{/if}}
+          </div>
+    </div>
+
+  </div>
+</nav>
+
+  
   <div class="page-container">
     <header>
-      <nav class="navbar navbar-expand-lg navbar-default">
+      {{!-- <nav class="navbar navbar-expand-lg navbar-default">
         <div class="container-fluid">
           <div>
             <a class="navbar-brand" href="/"><span class="navbar-brand-highlight">fonds voor west</span></a>
@@ -62,7 +108,7 @@
             {{/if}}
           </div>
         </div>
-      </nav>
+      </nav> --}}
 
     </header>
 
@@ -77,10 +123,10 @@
         </div>
       </div>
 
-
-
-
     </div>
+
+
+
 
     <footer>
       <div>A project by <a href="https://github.com/dirkkelderman">Dirk Kelderman</a> and <a
@@ -88,6 +134,7 @@
       <div>© 2020 D&A productions. All rights reserved.</div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="/javascripts/script.js"></script>
 </body>
 

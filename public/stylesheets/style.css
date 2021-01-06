@@ -51,16 +51,17 @@
   border-color: #00a6d0;
 }
 
-.navbar-brand {
+/* .navbar-brand {
   color: #00a6d0;
-}
+} */
 
 .navbar-brand-highlight {
+  color: #00a6d0;
   background-color: white;
   padding: 5px;
 }
 
-.navbar-brand:hover {
+.navbar-brand-highlight:hover {
   color: #3f5866;
 }
 

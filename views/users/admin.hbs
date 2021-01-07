@@ -26,12 +26,14 @@
               <option value="APPLICANT">APPLICANT</option>
               <option value="ADMIN">ADMIN</option>
             </select>
-        <td> <button class="btn btn-primary rounded-0" type="submit">Save role</button>
+            <td> 
+              <button class="btn btn-primary rounded-0" type="submit">Save role</button>
+            </td>
+        </form>
         </td>
         <td>
           <form action="/users/{{_id}}/delete" method="POST"
             onclick="return confirm('Are you sure you want to delete this user?')">
-
             <button class="btn btn-danger rounded-0">Delete</button>
           </form>
         </td>

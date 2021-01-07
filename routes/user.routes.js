@@ -76,7 +76,7 @@ router.get('/admin', checkAdmin, (req, res, next) => {
 // Admin route to delete a user
 router.post('/users/:id/delete', (req, res, next) => {
   const { id } = req.params;
-
+ 
   User.findByIdAndDelete(id)
   .then(() => res.redirect('/admin'))
   .catch((error) => next(error));

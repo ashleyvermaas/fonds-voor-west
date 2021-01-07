@@ -38,7 +38,7 @@ const projectSchema = new Schema({
   },
   projectImageUrl: {
     type: String,
-    default: "https://via.placeholder.com/560x420.png"
+    default: "http://www.dronestagr.am/wp-content/uploads/2013/08/GOPR1858.jpg"
   },
   accountabilityUrl: {
     type: String,

@@ -145,11 +145,302 @@ router.post('/forgot', (req, res, next) => {
       var mailOptions = {
         to: user.email,
         from: 'passwordreset@demo.com',
-        subject: 'Node.js Password Reset',
-        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+        subject: 'Fonds voor West Password Reset',
+        html: ` <!doctype html>
+        <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+          <head>
+            <title>
+              
+            </title>
+            <!--[if !mso]><!-- -->
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <!--<![endif]-->
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style type="text/css">
+              #outlook a { padding:0; }
+              body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
+              table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
+              img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
+              p { display:block;margin:13px 0; }
+            </style>
+            <!--[if mso]>
+            <xml>
+            <o:OfficeDocumentSettings>
+              <o:AllowPNG/>
+              <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+            </xml>
+            <![endif]-->
+            <!--[if lte mso 11]>
+            <style type="text/css">
+              .mj-outlook-group-fix { width:100% !important; }
+            </style>
+            <![endif]-->
+            
+          <!--[if !mso]><!-->
+            <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
+            <style type="text/css">
+              @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
+            </style>
+          <!--<![endif]-->
+      
+        
+            
+        <style type="text/css">
+          @media only screen and (min-width:480px) {
+            .mj-column-per-100 { width:100% !important; max-width: 100%; }
+          }
+        </style>
+        
+      
+            <style type="text/css">
+            
+            
+            </style>
+            
+            
+          </head>
+          <body style="background-color:#eeeeee;">
+            
+            
+          <div
+             style="background-color:#eeeeee;"
+          >
+            
+          
+          <!--[if mso | IE]>
+          <table
+             align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+          >
+            <tr>
+              <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+          <![endif]-->
+        
+          
+          <div  style="margin:0px auto;max-width:600px;">
+            
+            <table
+               align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"
+            >
+              <tbody>
+                <tr>
+                  <td
+                     style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"
+                  >
+                    <!--[if mso | IE]>
+                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    
+            <tr>
+          
+                <td
+                   class="" style="vertical-align:top;width:600px;"
+                >
+              <![endif]-->
+                
+          <div
+             class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"
+          >
+            
+          <table
+             border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"
+          >
+            
+                <tr>
+                  <td
+                     align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+                  >
+                    
+          <div
+             style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#555555;"
+          >This is the header</div>
+        
+                  </td>
+                </tr>
+              
+          </table>
+        
+          </div>
+        
+              <!--[if mso | IE]>
+                </td>
+              
+            </tr>
+          
+                      </table>
+                    <![endif]-->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
+        
+          
+          <!--[if mso | IE]>
+              </td>
+            </tr>
+          </table>
+          
+          <table
+             align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+          >
+            <tr>
+              <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+          <![endif]-->
+        
+          
+          <div  style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+            
+            <table
+               align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"
+            >
+              <tbody>
+                <tr>
+                  <td
+                     style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"
+                  >
+                    <!--[if mso | IE]>
+                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    
+            <tr>
+          
+                <td
+                   class="" style="vertical-align:top;width:600px;"
+                >
+              <![endif]-->
+                
+          <div
+             class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"
+          >
+            
+          <table
+             border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"
+          >
+            
+                <tr>
+                  <td
+                     align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+                  >
+                    
+          <div
+             style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#555555;"
+          ><h2>Password reset</h2>
+              <p>You are receiving this because you (or someone else) have requested the reset of the password for your account.
+      
+      Please click on the following link, or paste this into your browser to complete the process:</p>
+      
+        <a href="http://${req.headers.host}/reset/${token}">http://${req.headers.host}/reset/${token}</a>
+      
+      
+      <p>If you did not request this, please ignore this email and your password will remain unchanged.
+      </p></div>
+        
+                  </td>
+                </tr>
+              
+          </table>
+        
+          </div>
+        
+              <!--[if mso | IE]>
+                </td>
+              
+            </tr>
+          
+                      </table>
+                    <![endif]-->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
+        
+          
+          <!--[if mso | IE]>
+              </td>
+            </tr>
+          </table>
+          
+          <table
+             align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+          >
+            <tr>
+              <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+          <![endif]-->
+        
+          
+          <div  style="margin:0px auto;max-width:600px;">
+            
+            <table
+               align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"
+            >
+              <tbody>
+                <tr>
+                  <td
+                     style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"
+                  >
+                    <!--[if mso | IE]>
+                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    
+            <tr>
+          
+                <td
+                   class="" style="vertical-align:top;width:600px;"
+                >
+              <![endif]-->
+                
+          <div
+             class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"
+          >
+            
+          <table
+             border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"
+          >
+            
+                <tr>
+                  <td
+                     align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+                  >
+                    
+          <div
+             style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#555555;"
+          >This is the footer</div>
+        
+                  </td>
+                </tr>
+              
+          </table>
+        
+          </div>
+        
+              <!--[if mso | IE]>
+                </td>
+              
+            </tr>
+          
+                      </table>
+                    <![endif]-->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
+        
+          
+          <!--[if mso | IE]>
+              </td>
+            </tr>
+          </table>
+          <![endif]-->
+        
+        
+          </div>
+        
+          </body>
+        </html>`,
       };
       smtpTransport.sendMail(mailOptions, function(err) {
         // req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
@@ -169,7 +460,6 @@ router.get('/reset/:token', function(req, res) {
       // req.flash('error', 'Password reset token is invalid or has expired.');
       return res.redirect('/forgot');
     }
-    console.log(`The user is ${userFromDB}`)
     res.render('auth/reset', {
       user: userFromDB
     });
@@ -177,12 +467,10 @@ router.get('/reset/:token', function(req, res) {
 });
 
 router.post('/reset/:token', function(req, res) {
-  console.log('Post route started')
   async.waterfall([
     function(done) {
       User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
         if (!user) {
-          console.log('Right before back')
           // req.flash('error', 'Password reset token is invalid or has expired.');
           return res.redirect('back');
         }
@@ -201,37 +489,44 @@ router.post('/reset/:token', function(req, res) {
               }}, 
               {useFindAndModify: false}
             );
+        })
+        .then(
+          function(user, done) {
+          console.log('Sending e-mail');
+          var smtpTransport = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: process.env.MAILER_E_MAIL,
+              pass: process.env.MAILER_PASSWORD
+            }
+          });
+          var mailOptions = {
+            to: user.email,
+            from: 'passwordreset@demo.com',
+            subject: 'Node.js Password Reset',
+            text: 'Hello,\n\n' +
+            'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+          };
+          smtpTransport.sendMail(mailOptions, function(err) {
+            // req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+            done(err, 'done');
+          });
+        })
+        .then(() => {
+          res.redirect('/');
+        })
+        .catch(err => {
+          console.log(err);
         });
       });
     },
-    function(user, done) {
-      console.log("we will now send the email ...... ");
-      var smtpTransport = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.MAILER_E_MAIL,
-          pass: process.env.MAILER_PASSWORD
-        }
-      });
-      var mailOptions = {
-        to: user.email,
-        from: 'passwordreset@demo.com',
-        subject: 'Your password has been changed',
-        text: 'Hello,\n\n' +
-          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
-      };
-      smtpTransport.sendMail(mailOptions, function(err) {
-        // req.flash('success', 'Success! Your password has been changed.');
-        done(err);
-      });
-    }
-  ], function(err) {
-    console.log("entered our error handler........");
-    res.redirect('/');
+  ], 
+  function(err) {
+    console.log(err);
   });
 });
 
-
+// Google
 router.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'], prompt: 'select_account',}));
 

@@ -18,67 +18,68 @@
 
 
 <body>
-<div class="wrapper">
-{{!-- Header and navbar --}}
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-default">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/"><span class="navbar-brand-highlight">fonds voor west</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
-          {{#unless (ifNotLoggedIn user.role)}}
+  <div class="wrapper">
+    {{!-- Header and navbar --}}
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-default">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><span class="navbar-brand-highlight">fonds voor west</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+            {{#unless (ifNotLoggedIn user.role)}}
 
-          <ul class="navbar-nav">
-            {{#if (ifIsApplicant user.role) }}
-            <li class="nav-item"><a class="nav-link active" href="/profile">Profile</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/create">Create</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/projects">Projects</a></li>
-            {{/if}}
-            {{#if (ifIsCommittee user.role) }}
-            <li class="nav-item"><a class="nav-link active" href="/profile">Profile</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/create">Create</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/projects">Projects</a></li>
-            {{/if}}
-            {{#if (ifIsAdmin user.role) }}
-            <li class="nav-item"><a class="nav-link active" href="/profile">Profile</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/create">Create</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/admin">Admin</a></li>
-            {{/if}}
+            <ul class="navbar-nav">
+              {{#if (ifIsApplicant user.role) }}
+              <li class="nav-item"><a class="nav-link active" href="/profile">Profile</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/create">Create</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/projects">Projects</a></li>
+              {{/if}}
+              {{#if (ifIsCommittee user.role) }}
+              <li class="nav-item"><a class="nav-link active" href="/profile">Profile</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/create">Create</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/projects">Projects</a></li>
+              {{/if}}
+              {{#if (ifIsAdmin user.role) }}
+              <li class="nav-item"><a class="nav-link active" href="/profile">Profile</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/create">Create</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/projects">Projects</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/admin">Admin</a></li>
+              {{/if}}
 
-          </ul>
-          {{/unless}}
-          <form class="d-flex" action="/logout" method="POST">
-            {{#if (ifNotLoggedIn user.role)}}
-            <a class="navbar-btn" href="/signup"><span class="navbar-btn-highlight">Sign up</span></a>
-            <a class="navbar-btn" href="/login"><span class="navbar-btn-highlight">Log in</span></a>
-            {{else}}
-            <button class="navbar-btn navbar-btn-highlight"><span>Log out</span></button>
-            {{/if}}
-          </form>
+            </ul>
+            {{/unless}}
+            <form class="d-flex" action="/logout" method="POST">
+              {{#if (ifNotLoggedIn user.role)}}
+              <a class="navbar-btn" href="/signup"><span class="navbar-btn-highlight">Sign up</span></a>
+              <a class="navbar-btn" href="/login"><span class="navbar-btn-highlight">Log in</span></a>
+              {{else}}
+              <button class="navbar-btn navbar-btn-highlight"><span>Log out</span></button>
+              {{/if}}
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {{!-- Body and views --}}
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg">
+        </div>
+        <div class="col-md-auto card-body">
+          {{{body}}}
+        </div>
+        <div class="col col-lg">
         </div>
       </div>
-    </nav>
-  </header>
-
-{{!-- Body and views --}}
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col col-lg">
-      </div>
-      <div class="col-md-auto card-body">
-        {{{body}}}
-      </div>
-      <div class="col col-lg">
-      </div>
     </div>
+    <div class="push"></div>
   </div>
-  <div class="push"></div>
-</div>
-{{!-- Footer --}}
+  
+  {{!-- Footer --}}
   <footer class="footer">
     <div>A project by <a href="https://github.com/dirkkelderman">Dirk Kelderman</a> and <a
         href="https://github.com/ashleyvermaas">Ashley Vermaas</a></div>
@@ -89,7 +90,7 @@
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
     crossorigin="anonymous"></script>
   <script src="/javascripts/script.js"></script>
-  
+
 </body>
 
 </html>

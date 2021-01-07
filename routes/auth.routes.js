@@ -16,7 +16,6 @@ const async = require('async');
 const crypto = require('crypto');
 
 
-
 // Route to signup page
 router.get('/signup', (req, res, next) => res.render('auth/signup'));
 
@@ -105,12 +104,14 @@ router.post('/logout', (req, res) => {
   res.redirect('/');
 });
 
+// Route to forgot 
 router.get('/forgot', (req, res) => {
   res.render('auth/forgot', {
     user: req.user
   });
 });
 
+// Route to request reset token
 router.post('/forgot', (req, res, next) => {
   async.waterfall([
     function(done) {
@@ -162,7 +163,7 @@ router.post('/forgot', (req, res, next) => {
   });
 });
 
-
+// Route to reset password
 router.get('/reset/:token', function(req, res) {
   User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, userFromDB) {
     if (!userFromDB) {
@@ -175,6 +176,7 @@ router.get('/reset/:token', function(req, res) {
   });
 });
 
+// Route to save new password
 router.post('/reset/:token', function(req, res) {
   async.waterfall([
     function(done) {
@@ -241,7 +243,6 @@ router.get('/auth/google',
 router.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
-    // Successful authentication, redirect home.
     res.redirect('/profile');
   });
 
@@ -264,7 +265,6 @@ router.get('/auth/facebook',
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-    // Successful authentication, redirect home.
     res.redirect('/profile');
   });
 

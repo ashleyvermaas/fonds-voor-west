@@ -163,44 +163,50 @@ router.post('/forgot', (req, res, next) => {
 });
 
 
-// router.get('/reset', (req, res, next) => res.render('auth/reset'));
-
-
 router.get('/reset/:token', function(req, res) {
-  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-    if (!user) {
-      console.log('GET GET GET Password reset token is invalid or has expired.')
+  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, userFromDB) {
+    if (!userFromDB) {
       // req.flash('error', 'Password reset token is invalid or has expired.');
       return res.redirect('/forgot');
     }
+    console.log(`The user is ${userFromDB}`)
     res.render('auth/reset', {
-      user: req.user
+      user: userFromDB
     });
   });
 });
 
 router.post('/reset/:token', function(req, res) {
+  console.log('Post route started')
   async.waterfall([
     function(done) {
       User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
         if (!user) {
+          console.log('Right before back')
           // req.flash('error', 'Password reset token is invalid or has expired.');
           return res.redirect('back');
         }
 
-        user.password = req.body.password;
-        user.resetPasswordToken = undefined;
-        user.resetPasswordExpires = undefined;
+        let newPassword = req.body.password;
 
-        user.save(function(err) {
-          req.logIn(user, function(err) {
-            done(err, user);
-          });
+        bcrypt.genSalt(saltRounds)
+        .then(salt => bcrypt.hash(newPassword, salt))
+        .then(hashedPassword => {
+          return User.findOneAndUpdate(
+              {_id: user.id}, 
+              { $set:  { 
+                passwordHash: hashedPassword,
+                resetPasswordToken: undefined,
+                resetPasswordExpires: undefined
+              }}, 
+              {useFindAndModify: false}
+            );
         });
       });
     },
     function(user, done) {
-      var smtpTransport = nodemailer.createTransport('SMTP', {
+      console.log("we will now send the email ...... ");
+      var smtpTransport = nodemailer.createTransport({
         service: 'gmail',
         auth: {
           user: process.env.MAILER_E_MAIL,
@@ -220,61 +226,10 @@ router.post('/reset/:token', function(req, res) {
       });
     }
   ], function(err) {
+    console.log("entered our error handler........");
     res.redirect('/');
   });
 });
-
-// router.post('/reset', (req, res, next) => {
-//   async.waterfall([
-//     function(done) {
-//       console.log('Password reset')
-
-//       User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-//         if (!user) {
-//           console.log(`${user} <<< Password reset token is invalid or has expired.`)
-
-//           // req.flash('error', 'Password reset token is invalid or has expired.');
-//           return res.redirect('back');
-//         }
-
-//         user.password = req.body.password;
-//         user.resetPasswordToken = undefined;
-//         user.resetPasswordExpires = undefined;
-
-//         user.save(function(err) {
-//           console.log('Password expired.')
-
-//           req.logIn(user, function(err) {
-//             done(err, user);
-//           });
-//         });
-//       });
-//     },
-//     function(user, done) {
-//       var smtpTransport = nodemailer.createTransport({
-//         service: 'gmail',
-//         auth: {
-//           user: process.env.MAILER_E_MAIL,
-//           pass: process.env.MAILER_PASSWORD
-//         }
-//       });
-//       var mailOptions = {
-//         to: user.email,
-//         from: 'passwordreset@demo.com',
-//         subject: 'Your password has been changed',
-//         text: 'Hello,\n\n' +
-//           'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
-//       };
-//       smtpTransport.sendMail(mailOptions, function(err) {
-//         console.log('Success! Your password has been changed.')
-//         // req.flash('success', 'Success! Your password has been changed.');
-//         done(err);
-//       });
-//     }
-//   ], function(err) {
-//     res.redirect('/');
-//   });
-// });
 
 
 router.get('/auth/google',

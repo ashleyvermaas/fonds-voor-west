@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 
 const fileUploader = require('../configs/cloudinary.config');
 
+let cpUpload = fileUploader.fields([{ name: 'projectplan', maxCount: 1 }, { name: 'costing', maxCount: 1 }, { name: 'projectimage', maxCount: 1 }]);
+
 // Route to projects-list
 router.get('/projects', (req, res, next) => {
   const { _id } = req.user;
@@ -31,9 +33,6 @@ router.get('/projects', (req, res, next) => {
 router.get('/create', (req, res, next) => {
   res.render('projects/create');
 });
-
-
-var cpUpload = fileUploader.fields([{ name: 'projectplan', maxCount: 1 }, { name: 'costing', maxCount: 1 }, { name: 'projectimage', maxCount: 1 }]);
 
 router.post('/create', cpUpload, (req, res, next) => {
   const {

@@ -1,6 +1,6 @@
 <h1>Reset password</h1>
 
-<form action="/reset" method="POST">
+<form action="/reset/{{user.resetPasswordToken}}" method="POST">
   <label for="input-password" class="form-label">New Password</label>
   <input type="password" class="form-control" id="input-password" name="password" placeholder="New password">
 

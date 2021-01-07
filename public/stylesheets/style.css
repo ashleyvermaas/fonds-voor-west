@@ -137,6 +137,7 @@ footer {
   align-items: center;
   font-size: 13px;
   position: relative;
+  width: 100%;
 }
 
 footer a {

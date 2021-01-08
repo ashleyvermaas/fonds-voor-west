@@ -17,34 +17,34 @@
     <tbody>
       {{#each projects}}
       <tr>
-        <th scope="row"> {{name}}</th>
-        <td>{{date}}</td>
-        <td>{{location}}</td>
+        <th scope="row" class="table-data"> {{name}}</th>
+        <td class="table-data">{{date}}</td>
+        <td class="table-data">{{location}}</td>
 
         {{#if (statusApproved status) }}
         <td>
-          <p id="project-status" class="btn btn-success rounded-0">{{status}}</p>
+          <p id="project-status" class="btn btn-success rounded-0 table-data">{{status}}</p>
         </td>
         {{/if}}
 
         {{#if (statusDeclined status) }}
         <td>
-          <p id="project-status" class="btn btn-danger rounded-0">{{status}}</p>
+          <p id="project-status" class="btn btn-danger rounded-0 table-data">{{status}}</p>
         </td>
         {{/if}}
 
         {{#if (statusRequest status) }}
         <td>
-          <p id="project-status" class="btn btn-info rounded-0">{{status}}</p>
+          <p id="project-status" class="btn btn-info rounded-0 table-data">{{status}}</p>
         </td>
         {{/if}}
         {{#if (statusPending status)}}
         <td>
-          <p id="project-status" class="btn btn-warning rounded-0">{{status}}</p>
+          <p id="project-status" class="btn btn-warning rounded-0 table-data">{{status}}</p>
         </td>
         {{/if}}
         <td>
-          <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Details</a>
+          <a class="btn btn-primary rounded-0 table-data" href="/projects/{{_id}}/details">Details</a>
         </td>
       </tr>
 

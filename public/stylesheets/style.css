@@ -411,3 +411,7 @@ footer a:hover {
 .table-data {
   font-family: "Gotham Medium";
 }
+
+form input, form textarea{
+  font-family: "Gotham Medium";
+}

@@ -20,7 +20,7 @@
         <td>
           <form action="/users/{{_id}}/edit" method="POST">
             <select class="form-select" id="role" name="role" aria-label="Default select example">
-              <option selected>{{role}}</option>
+              <option hidden>{{role}}</option>
               <option value="COMMITTEE">COMMITTEE</option>
               <option value="APPLICANT">APPLICANT</option>
               <option value="ADMIN">ADMIN</option>

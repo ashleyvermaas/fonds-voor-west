@@ -15,7 +15,7 @@
   {{else}}
   <p>No accountability report available. Please submit.</p>
 
-  <form action="/projects/{{_id}}/accountable" method="POST" enctype="multipart/form-data">
+  <form action="/projects/{{projectFromDB._id}}/accountable" method="POST" enctype="multipart/form-data">
     <label for="accountability-input">Accountability report:</label>
     <textarea class="form-control" name="accountability" id="accountability-input" cols="40" rows="4"></textarea>
 
@@ -26,7 +26,7 @@
     </div>
 
     <button class="btn btn-secondary rounded-0" type="submit">Submit</button>
-          <a class="btn btn-primary rounded-0" href="/projects/{{_id}}/details">Back to project page</a>
+          <a class="btn btn-primary rounded-0" href="/projects/{{projectFromDB._id}}/details">Back to project page</a>
 
   </form>
   

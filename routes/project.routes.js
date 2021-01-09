@@ -170,7 +170,7 @@ router.post('/projects/:id/evaluate', (req, res, next) => {
   Project.findByIdAndUpdate(id, req.body, {
       new: true
     })
-    .then((projectFromDB) => res.render('projects/details', projectFromDB))
+    .then((projectFromDB) => res.render('projects/details', {projectFromDB}))
     .catch((error) => next(error));
 });
 
@@ -179,7 +179,7 @@ router.get('/projects/:id/accountable', (req, res, next) => {
   const { id } = req.params;
 
   Project.findById(id)
-    .then((projectFromDB) => res.render('projects/accountable', projectFromDB))
+    .then((projectFromDB) => res.render('projects/accountable', {projectFromDB}))
     .catch((error) => next(error));
 });
 
@@ -203,7 +203,7 @@ router.post('/projects/:id/accountable',  fileUploader.single('accountability'),
   }
 
   Project.findByIdAndUpdate(id, {accountability, accountabilityUrl}, { new: true })
-    .then((projectFromDB) => res.render('projects/details', projectFromDB))
+    .then((projectFromDB) => res.render('projects/details', {projectFromDB}))
     .catch((error) => next(error));
 });
 
@@ -213,7 +213,7 @@ router.get('/projects/:id/accountable/edit',  (req, res, next) => {
   const { accountability } = req.body;
 
   Project.findById(id)
-    .then((projectFromDB) => res.render('projects/edit-accountable', projectFromDB))
+    .then((projectFromDB) => res.render('projects/edit-accountable', {projectFromDB}))
     .catch((error) => next(error));
 });
 
@@ -230,7 +230,7 @@ router.post('/projects/:id/accountable/edit', fileUploader.single('accountabilit
   }
 
   Project.findByIdAndUpdate(id, {accountability, accountabilityUrl}, { new: true })
-    .then((projectFromDB) => res.render('projects/accountable', projectFromDB))
+    .then((projectFromDB) => res.render('projects/accountable', {projectFromDB}))
     .catch((error) => next(error));
 });
 

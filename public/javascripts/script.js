@@ -4,22 +4,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }, false);
 
+// let coordinates = {
+//   lat: Number(document.getElementById('lat').innerHTML),
+//   lng: Number(document.getElementById('lng').innerHTML),
+// }
 
 const amsterdamWest = {
   lat: 52.37524007976412, 
   lng: 4.862769947828028 
 }
 
-function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 14,
-    center: amsterdamWest,
-  });
-  const geocoder = new google.maps.Geocoder();
-  document.getElementById("submit").addEventListener("click", () => {
-    geocodeAddress(geocoder, map);
+
+const google_key = document.getElementById('google-key').innerHTML;
+//const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${google_key}`;
+let coordinates = {
+  lat: Number(document.getElementById('lat').innerHTML),
+  lng: Number(document.getElementById('lng').innerHTML),
+}
+
+console.log(coordinates);
+
+function initMap(coordinates) {
+  const map = new google.maps.Map(document.getElementById("map"), 
+  {
+      zoom: 18,
+      center: coordinates
+    }
+  );
+const marker = new google.maps.Marker({
+    position: {
+      lat: coordinates.lat,
+      lng: coordinates.lng
+    },
+    map: map,
+    title: "Project location"
   });
 }
+
+initMap(coordinates);
+
 
 function geocodeAddress(geocoder, resultsMap) {
   const address = document.getElementById("address").value;
@@ -38,6 +61,7 @@ function geocodeAddress(geocoder, resultsMap) {
 
 let placeSearch;
 let autocomplete;
+
 const componentForm = {
   street_number: "short_name",
   route: "long_name",
@@ -90,3 +114,5 @@ function geolocate() {
     });
   }
 }
+
+

@@ -5,6 +5,8 @@ const Project = require('../models/Project.model');
 const User = require('../models/User.model');
 const mongoose = require('mongoose');
 
+const axios = require('axios');
+
 const fileUploader = require('../configs/cloudinary.config');
 
 let cpUpload = fileUploader.fields([{ name: 'projectplan', maxCount: 1 }, { name: 'costing', maxCount: 1 }, { name: 'projectimage', maxCount: 1 }]);
@@ -47,7 +49,14 @@ router.post('/create', cpUpload, (req, res, next) => {
   const {costingUrl} = req.files['costing'][0];
   const {projectImageUrl} = req.files['projectimage'][0];
 
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.GOOGLE_MAPS_API_KEY}`
 
+  axios.get(url)
+  .then(response => {
+    //console.log(response.data.results.formatted_address)
+    const formattedAddress = response.data.results[0].formatted_address;
+    const coordinates = response.data.results[0].geometry.location;
+  
   if (!name || !date || !location || !description) {
     res.render('projects/create', req.user, {
       errorMessage: 'All fields are mandatory. Please provide answers for all fields'
@@ -58,7 +67,9 @@ router.post('/create', cpUpload, (req, res, next) => {
   Project.create({
       name,
       date,
-      location,
+      location: formattedAddress,
+      coordinateLat: coordinates.lat,
+      coordinateLng: coordinates.lng,
       description,
       owner: _id,
       projectplanUrl,
@@ -66,12 +77,19 @@ router.post('/create', cpUpload, (req, res, next) => {
       projectImageUrl,
     })
     .then(dbProject => {
-      return User.findByIdAndUpdate(_id, { $push: { projects: dbProject._id }
+      return User.findByIdAndUpdate(_id, {
+        $push: {
+          projects: dbProject._id
+        }
       });
     })
     .then(() => res.redirect('/projects'))
     .catch((error) => next(error));
-});
+  });
+  
+  });
+
+  
 
 // Route to delete a project
 router.post('/projects/:id/delete', (req, res, next) => {
@@ -127,10 +145,11 @@ router.post('/projects/:id/edit', fileUploader.single('projectplan'), (req, res,
 // Route to project details
 router.get('/projects/:id/details', (req, res, next) => {
   const { id } = req.params;
+  let key = process.env.GOOGLE_MAPS_API_KEY
 
   Project.findById(id)
     .populate('owner')
-    .then((projectFromDB) => res.render('projects/details', projectFromDB))
+    .then((projectFromDB) => res.render('projects/details', {projectFromDB, key}))
     .catch((error) => next(error));
 });
 

@@ -42,6 +42,12 @@ const projectSchema = new Schema({
   },
   accountabilityUrl: {
     type: String,
+  },
+  coordinateLat: {
+    type: String,
+  },
+  coordinateLng: {
+    type: String,
   }
 }, {
   timestamps: true

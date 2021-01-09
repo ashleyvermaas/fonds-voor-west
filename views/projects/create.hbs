@@ -55,22 +55,10 @@
 
   </div>
 
-  
-  <h4>Location</h4>
-  <div id="floating-panel">
-    <input id="address" type="textbox" value="{{location}}" />
-    <input id="submit" type="button" value="Geocode" />
-  </div>
-  <div id="map"></div>
-  
-  <button type="submit" class="btn btn-primary" value="Geocode">Create project</button>
+ 
+  <button type="submit" class="btn btn-primary" >Create project</button>
 
   {{#if errorMessage}}
   <p class="error">{{errorMessage}}</p>
   {{/if}}
 </form>
-
-
-<script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEuWhJdMM1bU-s_b5MJQ7UkIFxQo-tFDs&callback=initAutocomplete&libraries=places&v=weekly"
-  defer></script>

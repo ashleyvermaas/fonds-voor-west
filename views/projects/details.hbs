@@ -1,3 +1,9 @@
+<span id ="google-key" style="display: none;">{{key}}</span>
+<span id ="lat" style="display: none;">{{projectFromDB.coordinateLat}}</span>
+<span id ="lng" style="display: none;">{{projectFromDB.coordinateLng}}</span>
+
+
+
 <div>
   <h3 class="profile-header">Project details</h3>
 </div>
@@ -7,20 +13,20 @@
       <div class="col">
         <div class="mb-3">
           <h5>Project name:</h5>
-          <p>{{name}}</p>
+          <p>{{projectFromDB.name}}</p>
           <h5>Date:</h5>
-          <p>{{date}}</p>
+          <p>{{projectFromDB.date}}</p>
           <h5>Location:</h5>
-          <p>{{location}}</p>
+          <p>{{projectFromDB.location}}</p>
           <h5>Description:</h5>
-          <p>{{description}}</p>
+          <p>{{projectFromDB.description}}</p>
           <h5>Status:</h5>
-          <p>{{status}}</p>
+          <p>{{projectFromDB.status}}</p>
         </div>
         <div class="mb-3">
           <h5>Additional files:</h5>
-          <a href="{{projectplanUrl}}">View project plan</a><br>
-          <a href="{{costingUrl}}">View costing</a>
+          <a href="{{projectFromDB.projectplanUrl}}">View project plan</a><br>
+          <a href="{{projectFromDB.costingUrl}}">View costing</a>
         </div>
       </div>
       <div class="col">
@@ -33,7 +39,7 @@
       </div>
       <div>
         <h5>Accountability:</h5>
-        {{#if accountability}}
+        {{#if projectFromDB.accountability}}
         <p>The accountability form has been submitted</p>
         {{else}}
         <p>The accountability form has not been submitted yet</p>
@@ -41,13 +47,10 @@
       </div>
     </div>
   </div>
-  <h5>Location:</h5>
-  <div id="floating-panel">
-    <input id="address" type="textbox" value="{{location}}" />
-    <input id="submit" type="button" value="Search" />
-  </div>
-  <div id="map"></div>
+
+ <div id="map"></div>
 </div>
+
 <div class="d-flex justify-content-center project-details-btns">
   {{#if (ifIsApplicant user.role)}}
   <a href="/projects/{{_id}}/edit" class="btn btn-secondary rounded-0">Edit</a>

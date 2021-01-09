@@ -55,13 +55,15 @@
 
   </div>
 
-  <button type="submit" class="btn btn-primary" value="Geocode">Create project</button>
+  
   <h4>Location</h4>
   <div id="floating-panel">
     <input id="address" type="textbox" value="{{location}}" />
     <input id="submit" type="button" value="Geocode" />
   </div>
   <div id="map"></div>
+  
+  <button type="submit" class="btn btn-primary" value="Geocode">Create project</button>
 
   {{#if errorMessage}}
   <p class="error">{{errorMessage}}</p>

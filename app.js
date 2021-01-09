@@ -105,17 +105,32 @@ passport.use(new GoogleStrategy({
   callbackURL: "/auth/google/callback"
 },
 function(accessToken, refreshToken, profile, done) {
-  User.create({ 
-    firstname: profile.name.givenName, 
-    lastname: profile.name.familyName,
-    email: profile.emails[0].value,
-    googleId: profile.id ,
+
+  User.findOne( { email: profile.emails[0].value } )
+        .then(user => {
+          if (user) {
+            done(null, user);
+            return;
+          }
+ 
+      User.create({ 
+        firstname: profile.name.givenName, 
+        lastname: profile.name.familyName,
+        email: profile.emails[0].value,
+        googleId: profile.id, 
+        verified: true 
+      })
+          .then(newUser => {
+            done(null, newUser);
+          })
+          .catch(err => done(err)); 
+       })
+       .catch(err => done(err)); 
+    }
     
-  }, function (err, user) {
-    return done(err, user);
-  });
-}
-));
+  )
+);
+
 
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
@@ -123,19 +138,33 @@ passport.use(new FacebookStrategy({
   callbackURL: "http://localhost:3000/auth/facebook/callback",
   profileFields: ["email", "name"]
 },
-function(accessToken, refreshToken, profile, cb) {
-  console.log(profile)
+function(accessToken, refreshToken, profile, done) {
 
-  User.create({ 
-    firstname: profile.name.givenName, 
-    lastname: profile.name.familyName,
-    email: profile.email,
-    facebookId: profile.id 
-  }, function (err, user) {
-    return cb(err, user);
-  });
+  User.findOne( { email: profile.email } )
+  .then(user => {
+    if (user) {
+      done(null, user);
+      return;
+    }
+
+User.create({ 
+  firstname: profile.name.givenName, 
+  lastname: profile.name.familyName,
+  email: profile.email,
+  facebookId: profile.id, 
+  verified: true 
+})
+    .then(newUser => {
+      done(null, newUser);
+    })
+    .catch(err => done(err)); 
+ })
+ .catch(err => done(err)); 
 }
-));
+
+)
+);
+
 
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_KEY,
@@ -144,16 +173,31 @@ passport.use(new LinkedInStrategy({
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {
-  User.create({
-    firstname: profile.name.givenName, 
-    lastname: profile.name.familyName,
-    email: profile.emails[0].value,
-    linkedInId: profile.id ,
-  }), 
-  function (err, user) {
-    return done(null, profile);
-  };
-}));
+
+  User.findOne( { email: profile.emails[0].value } )
+  .then(user => {
+    if (user) {
+      done(null, user);
+      return;
+    }
+
+User.create({ 
+  firstname: profile.name.givenName, 
+  lastname: profile.name.familyName,
+  email: profile.emails[0].value,
+  linkedInId: profile.id ,
+  verified: true 
+})
+    .then(newUser => {
+      done(null, newUser);
+    })
+    .catch(err => done(err)); 
+ })
+ .catch(err => done(err)); 
+}
+
+)
+);
 
 
 app.use(passport.initialize());

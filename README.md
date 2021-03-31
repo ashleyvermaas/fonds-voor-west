@@ -1,5 +1,7 @@
 # Fonds voor West
 
+[< Link to the web app >](https://fondsvoorwest-ironhack.herokuapp.com/)
+
 ## What is Fonds voor West? 
 The project Fonds voor West is named after an Amsterdam-based organisation that provides grants for local initiatives. The aim of this project was to solve a problem which the "Fonds voor West" organisation was experiencing. The issue at hand was that their current platform wasn't very user friendly, and they also had a lot of issues with sharing the correct data and information with their committee members. The end goal was to help them efficiently manage the grant applications with the applicants and committee members.
 

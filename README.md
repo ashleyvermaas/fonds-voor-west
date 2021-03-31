@@ -1,17 +1,12 @@
-# project-2
+# Fonds voor West
 
-## project-2 / Fonds voor West - Ironhack
-This is a module 2 project for the Web Development course by Ironhack, started in september 2020. 
+## What is Fonds voor West? 
+The project Fonds voor West is named after an Amsterdam-based organisation that provides grants for local initiatives. The aim of this project was to solve a problem which the "Fonds voor West" organisation was experiencing. The issue at hand was that their current platform wasn't very user friendly, and they also had a lot of issues with sharing the correct data and information with their committee members. The end goal was to help them efficiently manage the grant applications with the applicants and committee members.
 
-## Motivation
-The project was created by students Ashley Vermaas and Dirk Kelderman. The project tried to solve a problem the grant funding platform "Fonds voor West" was having. The issue at hand was the use of their current platform. It wasn't really user friendly, and also they had a lot of problems with getting the right data and right information for their committee members.
+## Ironhack Project #2
+This project is part of the second module within the [Ironhack](https://ironhack.com/en) Web Development Course, and was created by [Ashley Vermaas](https://github.com/ashleyvermaas) and [Dirk Kelderman](https://github.com/dirkkelderman). 
 
-## Build status
-As always, the project is never finished. However we're pretty confident this is a MVP with a nice view for the future. 
-
-
-## Tech/framework used
-
+## Technologies and frameworks
 - Node.js
 - Express.js
 - Handlebars
@@ -32,6 +27,8 @@ As always, the project is never finished. However we're pretty confident this is
 ### Mail
 - Nodemailer
 
+## Build status
+As always, the project is never finished. However, we're pretty confident this is a MVP that shows potential.
 
 ## Credits
 Big s/o to the whole Ironhack crew of the WebDev Parttime September Cohort. 
